@@ -78,6 +78,7 @@
             this.RepositoryLinkTextBox.Name = "RepositoryLinkTextBox";
             this.RepositoryLinkTextBox.Size = new System.Drawing.Size(409, 22);
             this.RepositoryLinkTextBox.TabIndex = 1;
+            this.RepositoryLinkTextBox.Leave += new System.EventHandler(this.Component_Leave);
             // 
             // SelectGDBButton
             // 
@@ -96,6 +97,7 @@
             this.GDBTextBox.ReadOnly = true;
             this.GDBTextBox.Size = new System.Drawing.Size(289, 22);
             this.GDBTextBox.TabIndex = 4;
+            this.GDBTextBox.TextChanged += new System.EventHandler(this.Component_Leave);
             // 
             // label2
             // 
@@ -113,6 +115,7 @@
             this.MSYSTextBox.ReadOnly = true;
             this.MSYSTextBox.Size = new System.Drawing.Size(289, 22);
             this.MSYSTextBox.TabIndex = 7;
+            this.MSYSTextBox.TextChanged += new System.EventHandler(this.Component_Leave);
             // 
             // label3
             // 
@@ -144,6 +147,7 @@
             this.MicrOSTextBox.ReadOnly = true;
             this.MicrOSTextBox.Size = new System.Drawing.Size(289, 22);
             this.MicrOSTextBox.TabIndex = 10;
+            this.MicrOSTextBox.TextChanged += new System.EventHandler(this.Component_Leave);
             // 
             // label4
             // 
@@ -216,6 +220,7 @@
             this.DiscLetterTextBox.Name = "DiscLetterTextBox";
             this.DiscLetterTextBox.Size = new System.Drawing.Size(409, 22);
             this.DiscLetterTextBox.TabIndex = 17;
+            this.DiscLetterTextBox.Leave += new System.EventHandler(this.Component_Leave);
             // 
             // label9
             // 
@@ -242,6 +247,7 @@
             this.DebuggerTargetComboBox.Name = "DebuggerTargetComboBox";
             this.DebuggerTargetComboBox.Size = new System.Drawing.Size(409, 24);
             this.DebuggerTargetComboBox.TabIndex = 19;
+            this.DebuggerTargetComboBox.Leave += new System.EventHandler(this.Component_Leave);
             // 
             // GeneratorProgressBar
             // 
@@ -257,6 +263,7 @@
             this.QemuTextBox.ReadOnly = true;
             this.QemuTextBox.Size = new System.Drawing.Size(289, 22);
             this.QemuTextBox.TabIndex = 23;
+            this.QemuTextBox.TextChanged += new System.EventHandler(this.Component_Leave);
             // 
             // label11
             // 
