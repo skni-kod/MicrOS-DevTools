@@ -1,4 +1,4 @@
-﻿namespace MicrOS_DevTools
+﻿namespace MicrOS_DevTools.Forms
 {
     partial class MainForm
     {
@@ -39,7 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.SelectMSYSButton = new System.Windows.Forms.Button();
             this.SelectMSYSDialog = new System.Windows.Forms.OpenFileDialog();
-            this.MicrOSTextBox = new System.Windows.Forms.TextBox();
+            this.ProjectPathTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SelectMicrOSDirectoryButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.GenerateConfigurationButton = new System.Windows.Forms.Button();
-            this.DiscLetterTextBox = new System.Windows.Forms.TextBox();
+            this.FloppyLetterTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.DebuggerTargetComboBox = new System.Windows.Forms.ComboBox();
@@ -140,14 +140,14 @@
             // 
             this.SelectMSYSDialog.Filter = "MSYS | msys2_shell.cmd";
             // 
-            // MicrOSTextBox
+            // ProjectPathTextBox
             // 
-            this.MicrOSTextBox.Location = new System.Drawing.Point(322, 128);
-            this.MicrOSTextBox.Name = "MicrOSTextBox";
-            this.MicrOSTextBox.ReadOnly = true;
-            this.MicrOSTextBox.Size = new System.Drawing.Size(289, 22);
-            this.MicrOSTextBox.TabIndex = 10;
-            this.MicrOSTextBox.TextChanged += new System.EventHandler(this.Component_Leave);
+            this.ProjectPathTextBox.Location = new System.Drawing.Point(322, 128);
+            this.ProjectPathTextBox.Name = "ProjectPathTextBox";
+            this.ProjectPathTextBox.ReadOnly = true;
+            this.ProjectPathTextBox.Size = new System.Drawing.Size(289, 22);
+            this.ProjectPathTextBox.TabIndex = 10;
+            this.ProjectPathTextBox.TextChanged += new System.EventHandler(this.Component_Leave);
             // 
             // label4
             // 
@@ -213,14 +213,14 @@
             this.GenerateConfigurationButton.Text = "Pobierz i wygeneruj konfigurację";
             this.GenerateConfigurationButton.UseVisualStyleBackColor = true;
             // 
-            // DiscLetterTextBox
+            // FloppyLetterTextBox
             // 
-            this.DiscLetterTextBox.Location = new System.Drawing.Point(322, 157);
-            this.DiscLetterTextBox.MaxLength = 1;
-            this.DiscLetterTextBox.Name = "DiscLetterTextBox";
-            this.DiscLetterTextBox.Size = new System.Drawing.Size(409, 22);
-            this.DiscLetterTextBox.TabIndex = 17;
-            this.DiscLetterTextBox.Leave += new System.EventHandler(this.Component_Leave);
+            this.FloppyLetterTextBox.Location = new System.Drawing.Point(322, 157);
+            this.FloppyLetterTextBox.MaxLength = 1;
+            this.FloppyLetterTextBox.Name = "FloppyLetterTextBox";
+            this.FloppyLetterTextBox.Size = new System.Drawing.Size(409, 22);
+            this.FloppyLetterTextBox.TabIndex = 17;
+            this.FloppyLetterTextBox.Leave += new System.EventHandler(this.Component_Leave);
             // 
             // label9
             // 
@@ -309,14 +309,14 @@
             this.Controls.Add(this.GeneratorProgressBar);
             this.Controls.Add(this.DebuggerTargetComboBox);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.DiscLetterTextBox);
+            this.Controls.Add(this.FloppyLetterTextBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.GenerateConfigurationButton);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.MicrOSTextBox);
+            this.Controls.Add(this.ProjectPathTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.SelectMicrOSDirectoryButton);
             this.Controls.Add(this.MSYSTextBox);
@@ -350,7 +350,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button SelectMSYSButton;
         private System.Windows.Forms.OpenFileDialog SelectMSYSDialog;
-        private System.Windows.Forms.TextBox MicrOSTextBox;
+        private System.Windows.Forms.TextBox ProjectPathTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button SelectMicrOSDirectoryButton;
         private System.Windows.Forms.Label label5;
@@ -358,7 +358,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button GenerateConfigurationButton;
-        private System.Windows.Forms.TextBox DiscLetterTextBox;
+        private System.Windows.Forms.TextBox FloppyLetterTextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox DebuggerTargetComboBox;

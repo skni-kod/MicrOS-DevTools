@@ -1,13 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using MicrOS_DevTools.Settings;
 
-namespace MicrOS_DevTools
+namespace MicrOS_DevTools.Forms
 {
     public partial class MainForm : Form
     {
+        private SettingsContainer _settingsContainer = new SettingsContainer();
+
         public MainForm()
         {
             InitializeComponent();
+            InitializeBindings();
+        }
+
+        private void InitializeBindings()
+        {
+            var _bindings = new Dictionary<Control, string>
+            {
+                { RepositoryLinkTextBox, "RepositoryLink" },
+                { GDBTextBox, "DebuggerPath" },
+                { MSYSTextBox, "MsysPath" },
+                { QemuTextBox, "QemuPath" },
+                { ProjectPathTextBox, "ProjectPath" },
+                { FloppyLetterTextBox, "FloppyLetter" }
+            };
+
+            foreach (var binding in _bindings)
+            {
+                binding.Key.DataBindings.Add("Text", _settingsContainer, binding.Value, false,
+                    DataSourceUpdateMode.OnPropertyChanged);
+            }
         }
 
         private void SelectGDBButton_Click(object sender, EventArgs e)
@@ -38,7 +62,7 @@ namespace MicrOS_DevTools
         {
             if (SelectMicrOSDirectoryDialog.ShowDialog() == DialogResult.OK)
             {
-                MicrOSTextBox.Text = SelectMicrOSDirectoryDialog.SelectedPath;
+                ProjectPathTextBox.Text = SelectMicrOSDirectoryDialog.SelectedPath;
             }
         }
 
