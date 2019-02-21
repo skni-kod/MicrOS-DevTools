@@ -78,7 +78,6 @@
             this.RepositoryLinkTextBox.Name = "RepositoryLinkTextBox";
             this.RepositoryLinkTextBox.Size = new System.Drawing.Size(409, 22);
             this.RepositoryLinkTextBox.TabIndex = 1;
-            this.RepositoryLinkTextBox.Leave += new System.EventHandler(this.Component_Leave);
             // 
             // SelectGDBButton
             // 
@@ -97,7 +96,6 @@
             this.GDBTextBox.ReadOnly = true;
             this.GDBTextBox.Size = new System.Drawing.Size(289, 22);
             this.GDBTextBox.TabIndex = 4;
-            this.GDBTextBox.TextChanged += new System.EventHandler(this.Component_Leave);
             // 
             // label2
             // 
@@ -115,7 +113,6 @@
             this.MSYSTextBox.ReadOnly = true;
             this.MSYSTextBox.Size = new System.Drawing.Size(289, 22);
             this.MSYSTextBox.TabIndex = 7;
-            this.MSYSTextBox.TextChanged += new System.EventHandler(this.Component_Leave);
             // 
             // label3
             // 
@@ -147,7 +144,6 @@
             this.ProjectPathTextBox.ReadOnly = true;
             this.ProjectPathTextBox.Size = new System.Drawing.Size(289, 22);
             this.ProjectPathTextBox.TabIndex = 10;
-            this.ProjectPathTextBox.TextChanged += new System.EventHandler(this.Component_Leave);
             // 
             // label4
             // 
@@ -210,8 +206,9 @@
             this.GenerateConfigurationButton.Name = "GenerateConfigurationButton";
             this.GenerateConfigurationButton.Size = new System.Drawing.Size(255, 52);
             this.GenerateConfigurationButton.TabIndex = 15;
-            this.GenerateConfigurationButton.Text = "Pobierz i wygeneruj konfigurację";
+            this.GenerateConfigurationButton.Text = "Zapisz ustawienia i wygeneruj aktualną konfigurację";
             this.GenerateConfigurationButton.UseVisualStyleBackColor = true;
+            this.GenerateConfigurationButton.Click += new System.EventHandler(this.GenerateConfigurationButton_Click);
             // 
             // FloppyLetterTextBox
             // 
@@ -220,7 +217,6 @@
             this.FloppyLetterTextBox.Name = "FloppyLetterTextBox";
             this.FloppyLetterTextBox.Size = new System.Drawing.Size(409, 22);
             this.FloppyLetterTextBox.TabIndex = 17;
-            this.FloppyLetterTextBox.Leave += new System.EventHandler(this.Component_Leave);
             // 
             // label9
             // 
@@ -247,7 +243,6 @@
             this.DebuggerTargetComboBox.Name = "DebuggerTargetComboBox";
             this.DebuggerTargetComboBox.Size = new System.Drawing.Size(409, 24);
             this.DebuggerTargetComboBox.TabIndex = 19;
-            this.DebuggerTargetComboBox.Leave += new System.EventHandler(this.Component_Leave);
             // 
             // GeneratorProgressBar
             // 
@@ -263,7 +258,6 @@
             this.QemuTextBox.ReadOnly = true;
             this.QemuTextBox.Size = new System.Drawing.Size(289, 22);
             this.QemuTextBox.TabIndex = 23;
-            this.QemuTextBox.TextChanged += new System.EventHandler(this.Component_Leave);
             // 
             // label11
             // 

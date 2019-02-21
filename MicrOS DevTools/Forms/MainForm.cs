@@ -7,11 +7,17 @@ namespace MicrOS_DevTools.Forms
 {
     public partial class MainForm : Form
     {
-        private SettingsContainer _settingsContainer = new SettingsContainer();
+        private SettingsManager _settingsManager;
+        private SettingsContainer _settingsContainer;
+
+        private const string SettingsPath = "settings.json";
 
         public MainForm()
         {
+            _settingsManager = new SettingsManager();
+
             InitializeComponent();
+            LoadSettings();
             InitializeBindings();
         }
 
@@ -32,6 +38,11 @@ namespace MicrOS_DevTools.Forms
                 binding.Key.DataBindings.Add("Text", _settingsContainer, binding.Value, false,
                     DataSourceUpdateMode.OnPropertyChanged);
             }
+        }
+
+        private void LoadSettings()
+        {
+            _settingsContainer = _settingsManager.Load(SettingsPath);
         }
 
         private void SelectGDBButton_Click(object sender, EventArgs e)
@@ -66,9 +77,9 @@ namespace MicrOS_DevTools.Forms
             }
         }
 
-        private void Component_Leave(object sender, EventArgs e)
+        private void GenerateConfigurationButton_Click(object sender, EventArgs e)
         {
-
+            _settingsManager.Save(SettingsPath, _settingsContainer);
         }
     }
 }
