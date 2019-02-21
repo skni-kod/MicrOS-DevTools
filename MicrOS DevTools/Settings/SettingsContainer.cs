@@ -8,5 +8,6 @@
         public string QemuPath { get; set; }
         public string ProjectPath { get; set; }
         public string FloppyLetter { get; set; }
+        public string DebuggerTarget { get; set; }
     }
 }

@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using MicrOS_DevTools.Generators;
 using MicrOS_DevTools.Settings;
 
 namespace MicrOS_DevTools.Forms
 {
     public partial class MainForm : Form
     {
-        private SettingsManager _settingsManager;
+        private readonly SettingsManager _settingsManager;
+        private readonly DebuggerTargetsGenerator _debuggerTargetsGenerator;
         private SettingsContainer _settingsContainer;
 
         private const string SettingsPath = "settings.json";
@@ -15,32 +18,37 @@ namespace MicrOS_DevTools.Forms
         public MainForm()
         {
             _settingsManager = new SettingsManager();
+            _debuggerTargetsGenerator = new DebuggerTargetsGenerator();
 
             InitializeComponent();
-            LoadSettings();
+            InitializeSettings();
             InitializeBindings();
         }
 
         private void InitializeBindings()
         {
-            var _bindings = new Dictionary<Control, string>
+            var bindings = new Dictionary<Control, string>
             {
                 { RepositoryLinkTextBox, "RepositoryLink" },
                 { GDBTextBox, "DebuggerPath" },
                 { MSYSTextBox, "MsysPath" },
                 { QemuTextBox, "QemuPath" },
                 { ProjectPathTextBox, "ProjectPath" },
-                { FloppyLetterTextBox, "FloppyLetter" }
+                { FloppyLetterTextBox, "FloppyLetter" },
+                { DebuggerTargetComboBox, "DebuggerTarget" }
             };
 
-            foreach (var binding in _bindings)
+            foreach (var binding in bindings)
             {
                 binding.Key.DataBindings.Add("Text", _settingsContainer, binding.Value, false,
                     DataSourceUpdateMode.OnPropertyChanged);
             }
+
+            var debuggerTargets = _debuggerTargetsGenerator.Generate(_settingsContainer.ProjectPath);
+            DebuggerTargetComboBox.Items.AddRange(debuggerTargets.ToArray());
         }
 
-        private void LoadSettings()
+        private void InitializeSettings()
         {
             _settingsContainer = _settingsManager.Load(SettingsPath);
         }

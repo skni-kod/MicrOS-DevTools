@@ -206,7 +206,7 @@
             this.GenerateConfigurationButton.Name = "GenerateConfigurationButton";
             this.GenerateConfigurationButton.Size = new System.Drawing.Size(255, 52);
             this.GenerateConfigurationButton.TabIndex = 15;
-            this.GenerateConfigurationButton.Text = "Zapisz ustawienia i wygeneruj aktualną konfigurację";
+            this.GenerateConfigurationButton.Text = "Zapisz ustawienia i wygeneruj pliki konfiguracyjne";
             this.GenerateConfigurationButton.UseVisualStyleBackColor = true;
             this.GenerateConfigurationButton.Click += new System.EventHandler(this.GenerateConfigurationButton_Click);
             // 
@@ -238,6 +238,7 @@
             // 
             // DebuggerTargetComboBox
             // 
+            this.DebuggerTargetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DebuggerTargetComboBox.FormattingEnabled = true;
             this.DebuggerTargetComboBox.Location = new System.Drawing.Point(322, 185);
             this.DebuggerTargetComboBox.Name = "DebuggerTargetComboBox";
