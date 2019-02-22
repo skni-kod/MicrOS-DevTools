@@ -352,6 +352,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MicrOS DevTools";
             this.ResumeLayout(false);
             this.PerformLayout();

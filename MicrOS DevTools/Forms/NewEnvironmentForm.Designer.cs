@@ -39,6 +39,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewEnvironmentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MicrOS Dev Tools";
             this.ResumeLayout(false);
 
