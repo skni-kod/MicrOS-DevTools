@@ -11,6 +11,7 @@ namespace MicrOS_DevTools.Forms
     {
         private readonly SettingsManager _settingsManager;
         private readonly DebuggerTargetsGenerator _debuggerTargetsGenerator;
+        private readonly FileDownloader _fileDownloader;
         private SettingsContainer _settingsContainer;
 
         private const string SettingsPath = "settings.json";
@@ -19,6 +20,8 @@ namespace MicrOS_DevTools.Forms
         {
             _settingsManager = new SettingsManager();
             _debuggerTargetsGenerator = new DebuggerTargetsGenerator();
+            _fileDownloader = new FileDownloader();
+            _fileDownloader.OnDownloadProgress += FileDownloader_OnDownloadProgress;
 
             InitializeComponent();
             InitializeSettings();
@@ -87,7 +90,23 @@ namespace MicrOS_DevTools.Forms
 
         private void GenerateConfigurationButton_Click(object sender, EventArgs e)
         {
+            var filesToDownload = new string[]
+            {
+                "build.sh",
+                "build_environment.sh",
+                "build_library.sh",
+                "clean.sh",
+                "launch.json",
+                "tasks.json"
+            };
+
+            var downloadedFiles = _fileDownloader.Download(_settingsContainer.RepositoryLink, filesToDownload);
             _settingsManager.Save(SettingsPath, _settingsContainer);
+        }
+
+        private void FileDownloader_OnDownloadProgress(object sender, float e)
+        {
+            GeneratorProgressBar.Value = (int)e;
         }
     }
 }
