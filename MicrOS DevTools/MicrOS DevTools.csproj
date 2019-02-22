@@ -59,6 +59,7 @@
     <Compile Include="Generators\FileSaver.cs" />
     <Compile Include="Generators\DebuggerTargetsGenerator.cs" />
     <Compile Include="Generators\FileDownloader.cs" />
+    <Compile Include="Generators\RemoteVersionChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\SettingsContainer.cs" />

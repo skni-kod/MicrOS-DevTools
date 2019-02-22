@@ -10,5 +10,6 @@
         public string FloppyLetter { get; set; }
         public string DebuggerTarget { get; set; }
         public string WindowsVersion { get; set; }
+        public string LocalConfigurationVersion { get; set; }
     }
 }

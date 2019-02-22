@@ -1,0 +1,16 @@
+﻿using System.IO;
+using System.Net;
+
+namespace MicrOS_DevTools.Generators
+{
+    public class RemoteVersionChecker
+    {
+        public string GetRemoteConfigurationVersion(string path)
+        {
+            using (var webClient = new WebClient())
+            {
+                return webClient.DownloadString(Path.Combine(path, "version.txt"));
+            }
+        }
+    }
+}

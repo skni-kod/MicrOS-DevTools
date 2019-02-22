@@ -44,8 +44,8 @@
             this.SelectMicrOSDirectoryButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.LocalConfigurationVersionLabel = new System.Windows.Forms.Label();
+            this.RemoteConfigurationVersionLabel = new System.Windows.Forms.Label();
             this.GenerateConfigurationButton = new System.Windows.Forms.Button();
             this.FloppyLetterTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -184,23 +184,23 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Wersja konfiguracji na repozytorium:";
             // 
-            // label7
+            // LocalConfigurationVersionLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(261, 256);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(23, 17);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "v1";
+            this.LocalConfigurationVersionLabel.AutoSize = true;
+            this.LocalConfigurationVersionLabel.Location = new System.Drawing.Point(261, 256);
+            this.LocalConfigurationVersionLabel.Name = "LocalConfigurationVersionLabel";
+            this.LocalConfigurationVersionLabel.Size = new System.Drawing.Size(16, 17);
+            this.LocalConfigurationVersionLabel.TabIndex = 13;
+            this.LocalConfigurationVersionLabel.Text = "0";
             // 
-            // label8
+            // RemoteConfigurationVersionLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(261, 287);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(23, 17);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "v1";
+            this.RemoteConfigurationVersionLabel.AutoSize = true;
+            this.RemoteConfigurationVersionLabel.Location = new System.Drawing.Point(261, 287);
+            this.RemoteConfigurationVersionLabel.Name = "RemoteConfigurationVersionLabel";
+            this.RemoteConfigurationVersionLabel.Size = new System.Drawing.Size(16, 17);
+            this.RemoteConfigurationVersionLabel.TabIndex = 14;
+            this.RemoteConfigurationVersionLabel.Text = "0";
             // 
             // GenerateConfigurationButton
             // 
@@ -332,8 +332,8 @@
             this.Controls.Add(this.FloppyLetterTextBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.GenerateConfigurationButton);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.RemoteConfigurationVersionLabel);
+            this.Controls.Add(this.LocalConfigurationVersionLabel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ProjectPathTextBox);
@@ -375,8 +375,8 @@
         private System.Windows.Forms.Button SelectMicrOSDirectoryButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label LocalConfigurationVersionLabel;
+        private System.Windows.Forms.Label RemoteConfigurationVersionLabel;
         private System.Windows.Forms.Button GenerateConfigurationButton;
         private System.Windows.Forms.TextBox FloppyLetterTextBox;
         private System.Windows.Forms.Label label9;

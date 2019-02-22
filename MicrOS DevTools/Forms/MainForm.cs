@@ -14,6 +14,7 @@ namespace MicrOS_DevTools.Forms
         private readonly FileDownloader _fileDownloader;
         private readonly FileContentReplacer _fileContentReplacer;
         private readonly FileSaver _fileSaver;
+        private readonly RemoteVersionChecker _remoteVersionChecker;
         private SettingsContainer _settingsContainer;
 
         private const string SettingsPath = "settings.json";
@@ -25,12 +26,16 @@ namespace MicrOS_DevTools.Forms
             _fileDownloader = new FileDownloader();
             _fileContentReplacer = new FileContentReplacer();
             _fileSaver = new FileSaver();
+            _remoteVersionChecker = new RemoteVersionChecker();
 
             InitializeComponent();
             InitializeSettings();
             InitializeBindings();
 
             _fileDownloader.OnDownloadProgress += FileDownloader_OnDownloadProgress;
+
+            RemoteConfigurationVersionLabel.Text = _remoteVersionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
+            LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
         }
 
         private void InitializeBindings()
@@ -116,7 +121,11 @@ namespace MicrOS_DevTools.Forms
             var downloadedFiles = _fileDownloader.Download(_settingsContainer.RepositoryLink, filesToDownload);
             _fileContentReplacer.Replace(_settingsContainer, downloadedFiles);
             _fileSaver.Save(_settingsContainer.ProjectPath, downloadedFiles);
+            
+            _settingsContainer.LocalConfigurationVersion = _remoteVersionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
             _settingsManager.Save(SettingsPath, _settingsContainer);
+
+            LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
         }
 
         private void FileDownloader_OnDownloadProgress(object sender, float e)
