@@ -293,6 +293,7 @@
             this.CreateEnvironmentButton.TabIndex = 24;
             this.CreateEnvironmentButton.Text = "Utwórz środowisko";
             this.CreateEnvironmentButton.UseVisualStyleBackColor = true;
+            this.CreateEnvironmentButton.Click += new System.EventHandler(this.CreateEnvironmentButton_Click);
             // 
             // WindowsVersionComboBox
             // 

@@ -132,5 +132,10 @@ namespace MicrOS_DevTools.Forms
         {
             GeneratorProgressBar.Value = (int)e;
         }
+
+        private void CreateEnvironmentButton_Click(object sender, EventArgs e)
+        {
+            new NewEnvironmentForm().ShowDialog();
+        }
     }
 }
