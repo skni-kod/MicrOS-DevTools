@@ -33,7 +33,7 @@ namespace MicrOS_DevTools.Generators
                 { "[DEBUGGER_TARGET]", settingsContainer.DebuggerTarget },
                 { "[FLOPPY_LETTER]", settingsContainer.FloppyLetter },
                 { "[MSYS_PATH]", settingsContainer.MsysPath },
-                { "[EXPLICT_POWERSHELL]", settingsContainer.WindowsVersion == "Windows 7" ? "powershell" : string.Empty }
+                { "[EXPLICIT_POWERSHELL]", settingsContainer.WindowsVersion == "Windows 7" ? "powershell" : string.Empty }
             };
         }
     }
