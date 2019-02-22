@@ -12,7 +12,7 @@ namespace MicrOS_DevTools.Generators
                    Directory.Exists(Path.Combine(path, "Scripts"));
         }
 
-        public void Save(string path, Dictionary<string, byte[]> files)
+        public void Save(string path, Dictionary<string, string> files)
         {
             foreach (var file in files)
             {
@@ -21,7 +21,7 @@ namespace MicrOS_DevTools.Generators
 
                 using (var fileWriter = new StreamWriter(targetFileName))
                 {
-                    fileWriter.Write(Encoding.ASCII.GetString(file.Value));
+                    fileWriter.Write(file.Value);
                 }
             }
         }

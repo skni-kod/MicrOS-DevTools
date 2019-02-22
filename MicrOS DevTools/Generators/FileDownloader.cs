@@ -9,9 +9,9 @@ namespace MicrOS_DevTools.Generators
     {
         public event EventHandler<float> OnDownloadProgress;
 
-        public Dictionary<string, byte[]> Download(string link, params string[] fileNames)
+        public Dictionary<string, string> Download(string link, params string[] fileNames)
         {
-            var downloadedFiles = new Dictionary<string, byte[]>();
+            var downloadedFiles = new Dictionary<string, string>();
             var webClient = new WebClient
             {
                 BaseAddress = link
@@ -21,7 +21,7 @@ namespace MicrOS_DevTools.Generators
             foreach (var fileName in fileNames)
             {
                 var content = webClient.DownloadData(fileName);
-                downloadedFiles.Add(fileName, content);
+                downloadedFiles.Add(fileName, Encoding.ASCII.GetString(content));
 
                 OnDownloadProgress?.Invoke(this, index++ * 100f / fileNames.Length);
             }

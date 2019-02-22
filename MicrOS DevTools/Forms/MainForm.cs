@@ -12,6 +12,7 @@ namespace MicrOS_DevTools.Forms
         private readonly SettingsManager _settingsManager;
         private readonly DebuggerTargetsGenerator _debuggerTargetsGenerator;
         private readonly FileDownloader _fileDownloader;
+        private readonly FileContentReplacer _fileContentReplacer;
         private readonly FileSaver _fileSaver;
         private SettingsContainer _settingsContainer;
 
@@ -22,6 +23,7 @@ namespace MicrOS_DevTools.Forms
             _settingsManager = new SettingsManager();
             _debuggerTargetsGenerator = new DebuggerTargetsGenerator();
             _fileDownloader = new FileDownloader();
+            _fileContentReplacer = new FileContentReplacer();
             _fileSaver = new FileSaver();
 
             InitializeComponent();
@@ -100,7 +102,7 @@ namespace MicrOS_DevTools.Forms
                 return;
             }
 
-            var filesToDownload = new string[]
+            var filesToDownload = new[]
             {
                 "build.sh",
                 "build_environment.sh",
@@ -111,8 +113,8 @@ namespace MicrOS_DevTools.Forms
             };
 
             var downloadedFiles = _fileDownloader.Download(_settingsContainer.RepositoryLink, filesToDownload);
+            _fileContentReplacer.Replace(_settingsContainer, downloadedFiles);
             _fileSaver.Save(_settingsContainer.ProjectPath, downloadedFiles);
-
             _settingsManager.Save(SettingsPath, _settingsContainer);
         }
 
