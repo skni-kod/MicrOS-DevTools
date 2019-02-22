@@ -43,7 +43,8 @@ namespace MicrOS_DevTools.Forms
                 { QemuTextBox, "QemuPath" },
                 { ProjectPathTextBox, "ProjectPath" },
                 { FloppyLetterTextBox, "FloppyLetter" },
-                { DebuggerTargetComboBox, "DebuggerTarget" }
+                { DebuggerTargetComboBox, "DebuggerTarget" },
+                { WindowsVersionComboBox, "WindowsVersion" }
             };
 
             foreach (var binding in bindings)

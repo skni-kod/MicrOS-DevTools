@@ -57,6 +57,8 @@
             this.SelectQemuButton = new System.Windows.Forms.Button();
             this.SelectQemuDialog = new System.Windows.Forms.OpenFileDialog();
             this.CreateEnvironmentButton = new System.Windows.Forms.Button();
+            this.WindowsVersionComboBox = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SelectGDBDialog
@@ -167,7 +169,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 230);
+            this.label5.Location = new System.Drawing.Point(12, 256);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(184, 17);
             this.label5.TabIndex = 11;
@@ -176,7 +178,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 261);
+            this.label6.Location = new System.Drawing.Point(12, 287);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(238, 17);
             this.label6.TabIndex = 12;
@@ -185,7 +187,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(261, 230);
+            this.label7.Location = new System.Drawing.Point(261, 256);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(23, 17);
             this.label7.TabIndex = 13;
@@ -194,7 +196,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(261, 261);
+            this.label8.Location = new System.Drawing.Point(261, 287);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(23, 17);
             this.label8.TabIndex = 14;
@@ -202,7 +204,7 @@
             // 
             // GenerateConfigurationButton
             // 
-            this.GenerateConfigurationButton.Location = new System.Drawing.Point(476, 230);
+            this.GenerateConfigurationButton.Location = new System.Drawing.Point(476, 256);
             this.GenerateConfigurationButton.Name = "GenerateConfigurationButton";
             this.GenerateConfigurationButton.Size = new System.Drawing.Size(255, 52);
             this.GenerateConfigurationButton.TabIndex = 15;
@@ -247,7 +249,7 @@
             // 
             // GeneratorProgressBar
             // 
-            this.GeneratorProgressBar.Location = new System.Drawing.Point(15, 291);
+            this.GeneratorProgressBar.Location = new System.Drawing.Point(15, 317);
             this.GeneratorProgressBar.Name = "GeneratorProgressBar";
             this.GeneratorProgressBar.Size = new System.Drawing.Size(716, 23);
             this.GeneratorProgressBar.TabIndex = 20;
@@ -285,18 +287,41 @@
             // 
             // CreateEnvironmentButton
             // 
-            this.CreateEnvironmentButton.Location = new System.Drawing.Point(322, 230);
+            this.CreateEnvironmentButton.Location = new System.Drawing.Point(322, 256);
             this.CreateEnvironmentButton.Name = "CreateEnvironmentButton";
             this.CreateEnvironmentButton.Size = new System.Drawing.Size(148, 52);
             this.CreateEnvironmentButton.TabIndex = 24;
             this.CreateEnvironmentButton.Text = "Utwórz środowisko";
             this.CreateEnvironmentButton.UseVisualStyleBackColor = true;
             // 
+            // WindowsVersionComboBox
+            // 
+            this.WindowsVersionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.WindowsVersionComboBox.FormattingEnabled = true;
+            this.WindowsVersionComboBox.Items.AddRange(new object[] {
+            "Windows 10",
+            "Windows 7"});
+            this.WindowsVersionComboBox.Location = new System.Drawing.Point(322, 217);
+            this.WindowsVersionComboBox.Name = "WindowsVersionComboBox";
+            this.WindowsVersionComboBox.Size = new System.Drawing.Size(409, 24);
+            this.WindowsVersionComboBox.TabIndex = 26;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 220);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(124, 17);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Wersja Windowsa:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 326);
+            this.ClientSize = new System.Drawing.Size(743, 350);
+            this.Controls.Add(this.WindowsVersionComboBox);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.CreateEnvironmentButton);
             this.Controls.Add(this.QemuTextBox);
             this.Controls.Add(this.label11);
@@ -363,6 +388,8 @@
         private System.Windows.Forms.Button SelectQemuButton;
         private System.Windows.Forms.OpenFileDialog SelectQemuDialog;
         private System.Windows.Forms.Button CreateEnvironmentButton;
+        private System.Windows.Forms.ComboBox WindowsVersionComboBox;
+        private System.Windows.Forms.Label label12;
     }
 }
 
