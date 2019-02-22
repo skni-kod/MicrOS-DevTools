@@ -12,6 +12,7 @@ namespace MicrOS_DevTools.Forms
         private readonly SettingsManager _settingsManager;
         private readonly DebuggerTargetsGenerator _debuggerTargetsGenerator;
         private readonly FileDownloader _fileDownloader;
+        private readonly FileSaver _fileSaver;
         private SettingsContainer _settingsContainer;
 
         private const string SettingsPath = "settings.json";
@@ -21,11 +22,13 @@ namespace MicrOS_DevTools.Forms
             _settingsManager = new SettingsManager();
             _debuggerTargetsGenerator = new DebuggerTargetsGenerator();
             _fileDownloader = new FileDownloader();
-            _fileDownloader.OnDownloadProgress += FileDownloader_OnDownloadProgress;
+            _fileSaver = new FileSaver();
 
             InitializeComponent();
             InitializeSettings();
             InitializeBindings();
+
+            _fileDownloader.OnDownloadProgress += FileDownloader_OnDownloadProgress;
         }
 
         private void InitializeBindings()
@@ -90,6 +93,13 @@ namespace MicrOS_DevTools.Forms
 
         private void GenerateConfigurationButton_Click(object sender, EventArgs e)
         {
+            if (!_fileSaver.CheckIfDirectoriesExist(_settingsContainer.ProjectPath))
+            {
+                MessageBox.Show("Nie można zlokalizować folderu .vscode lub Scripts w folderze projektu.",
+                    "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             var filesToDownload = new string[]
             {
                 "build.sh",
@@ -101,6 +111,8 @@ namespace MicrOS_DevTools.Forms
             };
 
             var downloadedFiles = _fileDownloader.Download(_settingsContainer.RepositoryLink, filesToDownload);
+            _fileSaver.Save(_settingsContainer.ProjectPath, downloadedFiles);
+
             _settingsManager.Save(SettingsPath, _settingsContainer);
         }
 
