@@ -51,19 +51,19 @@ namespace MicrOS_DevTools.Forms
             }
         }
 
-        private void CreateEnvironmentButton_Click(object sender, EventArgs e)
+        private async void CreateEnvironmentButton_Click(object sender, EventArgs e)
         {
             StatusLabel.Text = "pobieranie obrazu dyskietki";
             ProgressBar.Value = 20;
-            _floppyImageInstaller.Install(_settingsContainer.RepositoryLink, ProjectPathTextBox.Text);
+            await _floppyImageInstaller.InstallAsync(_settingsContainer.RepositoryLink, ProjectPathTextBox.Text);
 
             StatusLabel.Text = "pobieranie dodatkowych narzędzi";
             ProgressBar.Value = 40;
-            _zipInstaller.Install(_settingsContainer.RepositoryLink, "install/tools.zip", Path.Combine(ProjectPathTextBox.Text, "Tools"));
+            await _zipInstaller.InstallAsync(_settingsContainer.RepositoryLink, "install/tools.zip", Path.Combine(ProjectPathTextBox.Text, "Tools"));
 
             StatusLabel.Text = "pobieranie kompilatora";
             ProgressBar.Value = 60;
-            _zipInstaller.Install(_settingsContainer.RepositoryLink, "install/opt.zip", Path.Combine(MSYSTextBox.Text, ""));
+            await _zipInstaller.InstallAsync(_settingsContainer.RepositoryLink, "install/opt.zip", Path.Combine(MSYSTextBox.Text, ""));
 
             StatusLabel.Text = "konfiguracja MSYS2";
             ProgressBar.Value = 80;
