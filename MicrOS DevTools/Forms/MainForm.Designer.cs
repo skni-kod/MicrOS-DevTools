@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.SelectMicrOSDirectoryDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.RepositoryLinkTextBox = new System.Windows.Forms.TextBox();
@@ -78,7 +79,7 @@
             // 
             // MSYSTextBox
             // 
-            this.MSYSTextBox.Location = new System.Drawing.Point(322, 75);
+            this.MSYSTextBox.Location = new System.Drawing.Point(322, 72);
             this.MSYSTextBox.Name = "MSYSTextBox";
             this.MSYSTextBox.ReadOnly = true;
             this.MSYSTextBox.Size = new System.Drawing.Size(289, 22);
@@ -88,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 78);
+            this.label3.Location = new System.Drawing.Point(12, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(269, 17);
             this.label3.TabIndex = 6;
@@ -111,7 +112,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 244);
+            this.label5.Location = new System.Drawing.Point(12, 229);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(184, 17);
             this.label5.TabIndex = 11;
@@ -120,7 +121,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 272);
+            this.label6.Location = new System.Drawing.Point(12, 259);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(238, 17);
             this.label6.TabIndex = 12;
@@ -129,7 +130,7 @@
             // LocalConfigurationVersionLabel
             // 
             this.LocalConfigurationVersionLabel.AutoSize = true;
-            this.LocalConfigurationVersionLabel.Location = new System.Drawing.Point(263, 244);
+            this.LocalConfigurationVersionLabel.Location = new System.Drawing.Point(263, 229);
             this.LocalConfigurationVersionLabel.Name = "LocalConfigurationVersionLabel";
             this.LocalConfigurationVersionLabel.Size = new System.Drawing.Size(16, 17);
             this.LocalConfigurationVersionLabel.TabIndex = 13;
@@ -138,7 +139,7 @@
             // RemoteConfigurationVersionLabel
             // 
             this.RemoteConfigurationVersionLabel.AutoSize = true;
-            this.RemoteConfigurationVersionLabel.Location = new System.Drawing.Point(263, 272);
+            this.RemoteConfigurationVersionLabel.Location = new System.Drawing.Point(263, 259);
             this.RemoteConfigurationVersionLabel.Name = "RemoteConfigurationVersionLabel";
             this.RemoteConfigurationVersionLabel.Size = new System.Drawing.Size(16, 17);
             this.RemoteConfigurationVersionLabel.TabIndex = 14;
@@ -146,7 +147,7 @@
             // 
             // GenerateConfigurationButton
             // 
-            this.GenerateConfigurationButton.Location = new System.Drawing.Point(476, 244);
+            this.GenerateConfigurationButton.Location = new System.Drawing.Point(476, 229);
             this.GenerateConfigurationButton.Name = "GenerateConfigurationButton";
             this.GenerateConfigurationButton.Size = new System.Drawing.Size(255, 47);
             this.GenerateConfigurationButton.TabIndex = 15;
@@ -156,7 +157,7 @@
             // 
             // FloppyLetterTextBox
             // 
-            this.FloppyLetterTextBox.Location = new System.Drawing.Point(322, 146);
+            this.FloppyLetterTextBox.Location = new System.Drawing.Point(322, 137);
             this.FloppyLetterTextBox.MaxLength = 1;
             this.FloppyLetterTextBox.Name = "FloppyLetterTextBox";
             this.FloppyLetterTextBox.Size = new System.Drawing.Size(409, 22);
@@ -166,7 +167,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 136);
+            this.label9.Location = new System.Drawing.Point(12, 140);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(200, 17);
             this.label9.TabIndex = 16;
@@ -175,7 +176,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 179);
+            this.label10.Location = new System.Drawing.Point(12, 168);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(105, 17);
             this.label10.TabIndex = 18;
@@ -185,7 +186,7 @@
             // 
             this.DebuggerTargetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DebuggerTargetComboBox.FormattingEnabled = true;
-            this.DebuggerTargetComboBox.Location = new System.Drawing.Point(322, 176);
+            this.DebuggerTargetComboBox.Location = new System.Drawing.Point(322, 165);
             this.DebuggerTargetComboBox.Name = "DebuggerTargetComboBox";
             this.DebuggerTargetComboBox.Size = new System.Drawing.Size(409, 24);
             this.DebuggerTargetComboBox.TabIndex = 19;
@@ -193,14 +194,14 @@
             // 
             // GeneratorProgressBar
             // 
-            this.GeneratorProgressBar.Location = new System.Drawing.Point(15, 300);
+            this.GeneratorProgressBar.Location = new System.Drawing.Point(15, 288);
             this.GeneratorProgressBar.Name = "GeneratorProgressBar";
             this.GeneratorProgressBar.Size = new System.Drawing.Size(716, 23);
             this.GeneratorProgressBar.TabIndex = 20;
             // 
             // QemuTextBox
             // 
-            this.QemuTextBox.Location = new System.Drawing.Point(322, 109);
+            this.QemuTextBox.Location = new System.Drawing.Point(322, 106);
             this.QemuTextBox.Name = "QemuTextBox";
             this.QemuTextBox.ReadOnly = true;
             this.QemuTextBox.Size = new System.Drawing.Size(289, 22);
@@ -232,7 +233,7 @@
             // 
             // CreateEnvironmentButton
             // 
-            this.CreateEnvironmentButton.Location = new System.Drawing.Point(322, 244);
+            this.CreateEnvironmentButton.Location = new System.Drawing.Point(322, 229);
             this.CreateEnvironmentButton.Name = "CreateEnvironmentButton";
             this.CreateEnvironmentButton.Size = new System.Drawing.Size(148, 47);
             this.CreateEnvironmentButton.TabIndex = 24;
@@ -247,7 +248,7 @@
             this.WindowsVersionComboBox.Items.AddRange(new object[] {
             "Windows 10",
             "Windows 7"});
-            this.WindowsVersionComboBox.Location = new System.Drawing.Point(322, 206);
+            this.WindowsVersionComboBox.Location = new System.Drawing.Point(322, 195);
             this.WindowsVersionComboBox.Name = "WindowsVersionComboBox";
             this.WindowsVersionComboBox.Size = new System.Drawing.Size(409, 24);
             this.WindowsVersionComboBox.TabIndex = 26;
@@ -256,7 +257,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 209);
+            this.label12.Location = new System.Drawing.Point(12, 198);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(124, 17);
             this.label12.TabIndex = 25;
@@ -272,9 +273,9 @@
             // 
             // SelectMicrOSDirectoryButton
             // 
-            this.SelectMicrOSDirectoryButton.Location = new System.Drawing.Point(617, 31);
+            this.SelectMicrOSDirectoryButton.Location = new System.Drawing.Point(617, 34);
             this.SelectMicrOSDirectoryButton.Name = "SelectMicrOSDirectoryButton";
-            this.SelectMicrOSDirectoryButton.Size = new System.Drawing.Size(114, 28);
+            this.SelectMicrOSDirectoryButton.Size = new System.Drawing.Size(114, 29);
             this.SelectMicrOSDirectoryButton.TabIndex = 8;
             this.SelectMicrOSDirectoryButton.Text = "Wybierz...";
             this.SelectMicrOSDirectoryButton.UseVisualStyleBackColor = true;
@@ -283,7 +284,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 37);
+            this.label4.Location = new System.Drawing.Point(12, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(262, 17);
             this.label4.TabIndex = 9;
@@ -291,7 +292,7 @@
             // 
             // ProjectPathTextBox
             // 
-            this.ProjectPathTextBox.Location = new System.Drawing.Point(322, 45);
+            this.ProjectPathTextBox.Location = new System.Drawing.Point(322, 37);
             this.ProjectPathTextBox.Name = "ProjectPathTextBox";
             this.ProjectPathTextBox.ReadOnly = true;
             this.ProjectPathTextBox.Size = new System.Drawing.Size(289, 22);
@@ -302,7 +303,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 334);
+            this.ClientSize = new System.Drawing.Size(743, 322);
             this.Controls.Add(this.ConnectionStatus);
             this.Controls.Add(this.WindowsVersionComboBox);
             this.Controls.Add(this.label12);
@@ -329,6 +330,7 @@
             this.Controls.Add(this.RepositoryLinkTextBox);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
