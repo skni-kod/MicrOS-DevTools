@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using MicrOS_DevTools.Generators;
@@ -34,8 +35,10 @@ namespace MicrOS_DevTools.Forms
 
             _fileDownloader.OnDownloadProgress += FileDownloader_OnDownloadProgress;
 
-            RemoteConfigurationVersionLabel.Text = _remoteVersionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
+            RemoteConfigurationVersionLabel.Text = _remoteVersionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink); ;
             LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
+
+            UpdateConnectionStatus();
         }
 
         private void InitializeBindings()
@@ -150,6 +153,23 @@ namespace MicrOS_DevTools.Forms
                 FloppyLetterTextBox.Text.Length != 0 &&
                 DebuggerTargetComboBox.Text.Length != 0 &&
                 WindowsVersionComboBox.Text.Length != 0;
+        }
+
+        private void UpdateConnectionStatus()
+        {
+            if (_remoteVersionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink) == null)
+            {
+                ConnectionStatus.BackColor = Color.Red;
+            }
+            else
+            {
+                ConnectionStatus.BackColor = Color.LimeGreen;
+            }
+        }
+
+        private void RepositoryLinkTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            UpdateConnectionStatus();
         }
     }
 }

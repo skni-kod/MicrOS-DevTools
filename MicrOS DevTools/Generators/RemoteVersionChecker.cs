@@ -9,7 +9,14 @@ namespace MicrOS_DevTools.Generators
         {
             using (var webClient = new WebClient())
             {
-                return webClient.DownloadString(Path.Combine(path, "version.txt"));
+                try
+                {
+                    return webClient.DownloadString(Path.Combine(path, "version.txt"));
+                }
+                catch (WebException)
+                {
+                    return null;
+                }
             }
         }
     }

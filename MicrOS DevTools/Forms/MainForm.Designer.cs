@@ -59,6 +59,7 @@
             this.CreateEnvironmentButton = new System.Windows.Forms.Button();
             this.WindowsVersionComboBox = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.ConnectionStatus = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // SelectGDBDialog
@@ -78,9 +79,10 @@
             // 
             this.RepositoryLinkTextBox.Location = new System.Drawing.Point(322, 6);
             this.RepositoryLinkTextBox.Name = "RepositoryLinkTextBox";
-            this.RepositoryLinkTextBox.Size = new System.Drawing.Size(409, 22);
+            this.RepositoryLinkTextBox.Size = new System.Drawing.Size(381, 22);
             this.RepositoryLinkTextBox.TabIndex = 1;
             this.RepositoryLinkTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
+            this.RepositoryLinkTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RepositoryLinkTextBox_KeyUp);
             // 
             // SelectGDBButton
             // 
@@ -324,11 +326,20 @@
             this.label12.TabIndex = 25;
             this.label12.Text = "Wersja Windowsa:";
             // 
+            // ConnectionStatus
+            // 
+            this.ConnectionStatus.BackColor = System.Drawing.Color.Red;
+            this.ConnectionStatus.Location = new System.Drawing.Point(709, 6);
+            this.ConnectionStatus.Name = "ConnectionStatus";
+            this.ConnectionStatus.Size = new System.Drawing.Size(22, 22);
+            this.ConnectionStatus.TabIndex = 27;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(743, 350);
+            this.Controls.Add(this.ConnectionStatus);
             this.Controls.Add(this.WindowsVersionComboBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.CreateEnvironmentButton);
@@ -400,6 +411,7 @@
         private System.Windows.Forms.Button CreateEnvironmentButton;
         private System.Windows.Forms.ComboBox WindowsVersionComboBox;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel ConnectionStatus;
     }
 }
 
