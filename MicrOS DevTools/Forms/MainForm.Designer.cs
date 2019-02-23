@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SelectGDBDialog = new System.Windows.Forms.OpenFileDialog();
             this.SelectMicrOSDirectoryDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.RepositoryLinkTextBox = new System.Windows.Forms.TextBox();
@@ -58,10 +57,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.ConnectionStatus = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // SelectGDBDialog
-            // 
-            this.SelectGDBDialog.Filter = "GDB | gdb.exe";
             // 
             // label1
             // 
@@ -345,8 +340,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.OpenFileDialog SelectGDBDialog;
         private System.Windows.Forms.FolderBrowserDialog SelectMicrOSDirectoryDialog;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox RepositoryLinkTextBox;

@@ -52,5 +52,13 @@ namespace MicrOS_DevTools.Forms
             var p = Process.Start("D:/MSYS64/msys2_shell.cmd", "-defterm -mingw64 -no-start -here -c Scripts/build.sh");
             p.WaitForExit();
         }
+
+        private void SelectMicrOSDirectoryButton_Click(object sender, EventArgs e)
+        {
+            if (SelectMicrOSDirectoryDialog.ShowDialog() == DialogResult.OK)
+            {
+                ProjectPathTextBox.Text = SelectMicrOSDirectoryDialog.SelectedPath;
+            }
+        }
     }
 }

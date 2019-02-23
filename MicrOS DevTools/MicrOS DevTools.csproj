@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnvironmentInstaller\FloppyImageInstaller.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,11 +62,11 @@
     <Compile Include="Forms\NewEnvironmentForm.Designer.cs">
       <DependentUpon>NewEnvironmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generators\FileContentReplacer.cs" />
-    <Compile Include="Generators\FileSaver.cs" />
-    <Compile Include="Generators\DebuggerTargetsGenerator.cs" />
-    <Compile Include="Generators\FileDownloader.cs" />
-    <Compile Include="Generators\RemoteVersionChecker.cs" />
+    <Compile Include="ConfigsGenerators\FileContentReplacer.cs" />
+    <Compile Include="ConfigsGenerators\FileSaver.cs" />
+    <Compile Include="ConfigsGenerators\DebuggerTargetsGenerator.cs" />
+    <Compile Include="ConfigsGenerators\FileDownloader.cs" />
+    <Compile Include="ConfigsGenerators\RemoteVersionChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\SettingsContainer.cs" />

@@ -46,6 +46,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.VisualStudioCodeInstallerLink = new System.Windows.Forms.LinkLabel();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ProjectPathTextBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.SelectMicrOSDirectoryButton = new System.Windows.Forms.Button();
+            this.SelectMicrOSDirectoryDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -61,16 +66,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 140);
+            this.label2.Location = new System.Drawing.Point(14, 156);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(206, 17);
             this.label2.TabIndex = 1;
-            this.label2.Text = "1. QEMU (emulator procesora):";
+            this.label2.Text = "2. QEMU (emulator procesora):";
             // 
             // QemuInstallerLink
             // 
             this.QemuInstallerLink.AutoSize = true;
-            this.QemuInstallerLink.Location = new System.Drawing.Point(244, 140);
+            this.QemuInstallerLink.Location = new System.Drawing.Point(244, 156);
             this.QemuInstallerLink.Name = "QemuInstallerLink";
             this.QemuInstallerLink.Size = new System.Drawing.Size(119, 17);
             this.QemuInstallerLink.TabIndex = 3;
@@ -81,7 +86,7 @@
             // ImdiskInstallerLink
             // 
             this.ImdiskInstallerLink.AutoSize = true;
-            this.ImdiskInstallerLink.Location = new System.Drawing.Point(244, 166);
+            this.ImdiskInstallerLink.Location = new System.Drawing.Point(244, 182);
             this.ImdiskInstallerLink.Name = "ImdiskInstallerLink";
             this.ImdiskInstallerLink.Size = new System.Drawing.Size(119, 17);
             this.ImdiskInstallerLink.TabIndex = 5;
@@ -92,16 +97,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 166);
+            this.label3.Location = new System.Drawing.Point(14, 182);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(214, 17);
             this.label3.TabIndex = 4;
-            this.label3.Text = "2. Imdisk (montowanie dyskietki):";
+            this.label3.Text = "3. Imdisk (montowanie dyskietki):";
             // 
             // MsysInstallerLink
             // 
             this.MsysInstallerLink.AutoSize = true;
-            this.MsysInstallerLink.Location = new System.Drawing.Point(244, 192);
+            this.MsysInstallerLink.Location = new System.Drawing.Point(244, 208);
             this.MsysInstallerLink.Name = "MsysInstallerLink";
             this.MsysInstallerLink.Size = new System.Drawing.Size(119, 17);
             this.MsysInstallerLink.TabIndex = 7;
@@ -112,11 +117,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 192);
+            this.label4.Location = new System.Drawing.Point(14, 208);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(228, 17);
             this.label4.TabIndex = 6;
-            this.label4.Text = "3. MSYS2 (środowisko Linuksowe):";
+            this.label4.Text = "4. MSYS2 (środowisko Linuksowe):";
             // 
             // label5
             // 
@@ -131,7 +136,7 @@
             // 
             // MSYSTextBox
             // 
-            this.MSYSTextBox.Location = new System.Drawing.Point(193, 226);
+            this.MSYSTextBox.Location = new System.Drawing.Point(193, 281);
             this.MSYSTextBox.Name = "MSYSTextBox";
             this.MSYSTextBox.ReadOnly = true;
             this.MSYSTextBox.Size = new System.Drawing.Size(202, 22);
@@ -140,7 +145,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 229);
+            this.label6.Location = new System.Drawing.Point(14, 284);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(179, 17);
             this.label6.TabIndex = 10;
@@ -148,7 +153,7 @@
             // 
             // SelectMSYSButton
             // 
-            this.SelectMSYSButton.Location = new System.Drawing.Point(398, 221);
+            this.SelectMSYSButton.Location = new System.Drawing.Point(398, 276);
             this.SelectMSYSButton.Name = "SelectMSYSButton";
             this.SelectMSYSButton.Size = new System.Drawing.Size(84, 32);
             this.SelectMSYSButton.TabIndex = 9;
@@ -159,7 +164,7 @@
             // CreateEnvironmentButton
             // 
             this.CreateEnvironmentButton.Enabled = false;
-            this.CreateEnvironmentButton.Location = new System.Drawing.Point(340, 288);
+            this.CreateEnvironmentButton.Location = new System.Drawing.Point(340, 343);
             this.CreateEnvironmentButton.Name = "CreateEnvironmentButton";
             this.CreateEnvironmentButton.Size = new System.Drawing.Size(142, 29);
             this.CreateEnvironmentButton.TabIndex = 12;
@@ -169,7 +174,7 @@
             // 
             // ProgressBar
             // 
-            this.ProgressBar.Location = new System.Drawing.Point(17, 259);
+            this.ProgressBar.Location = new System.Drawing.Point(17, 314);
             this.ProgressBar.Name = "ProgressBar";
             this.ProgressBar.Size = new System.Drawing.Size(465, 23);
             this.ProgressBar.TabIndex = 13;
@@ -177,7 +182,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 294);
+            this.label7.Location = new System.Drawing.Point(14, 349);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(108, 17);
             this.label7.TabIndex = 14;
@@ -186,7 +191,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(117, 294);
+            this.label8.Location = new System.Drawing.Point(117, 349);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 17);
             this.label8.TabIndex = 15;
@@ -212,11 +217,51 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "1. Visual Studio Code (edytor)";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(14, 131);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(403, 17);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "(wymagany jest także dodatek do obsługi C/C++ od Microsoftu)";
+            // 
+            // ProjectPathTextBox
+            // 
+            this.ProjectPathTextBox.Location = new System.Drawing.Point(193, 248);
+            this.ProjectPathTextBox.Name = "ProjectPathTextBox";
+            this.ProjectPathTextBox.ReadOnly = true;
+            this.ProjectPathTextBox.Size = new System.Drawing.Size(202, 22);
+            this.ProjectPathTextBox.TabIndex = 21;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(14, 251);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(162, 17);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Katalog główny projektu:";
+            // 
+            // SelectMicrOSDirectoryButton
+            // 
+            this.SelectMicrOSDirectoryButton.Location = new System.Drawing.Point(398, 245);
+            this.SelectMicrOSDirectoryButton.Name = "SelectMicrOSDirectoryButton";
+            this.SelectMicrOSDirectoryButton.Size = new System.Drawing.Size(84, 28);
+            this.SelectMicrOSDirectoryButton.TabIndex = 19;
+            this.SelectMicrOSDirectoryButton.Text = "Wybierz...";
+            this.SelectMicrOSDirectoryButton.UseVisualStyleBackColor = true;
+            this.SelectMicrOSDirectoryButton.Click += new System.EventHandler(this.SelectMicrOSDirectoryButton_Click);
+            // 
             // NewEnvironmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 325);
+            this.ClientSize = new System.Drawing.Size(494, 385);
+            this.Controls.Add(this.ProjectPathTextBox);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.SelectMicrOSDirectoryButton);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.VisualStudioCodeInstallerLink);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -265,5 +310,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.LinkLabel VisualStudioCodeInstallerLink;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox ProjectPathTextBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button SelectMicrOSDirectoryButton;
+        private System.Windows.Forms.FolderBrowserDialog SelectMicrOSDirectoryDialog;
     }
 }
