@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using MicrOS_DevTools.EnvironmentInstaller;
 using MicrOS_DevTools.Settings;
@@ -16,6 +10,7 @@ namespace MicrOS_DevTools.Forms
     public partial class NewEnvironmentForm : Form
     {
         private readonly FloppyImageInstaller _floppyImageInstaller;
+        private readonly ZipInstaller _zipInstaller;
         private SettingsContainer _settingsContainer;
 
         public NewEnvironmentForm(SettingsContainer settingsContainer)
@@ -24,6 +19,7 @@ namespace MicrOS_DevTools.Forms
             _settingsContainer = settingsContainer;
 
             _floppyImageInstaller = new FloppyImageInstaller();
+            _zipInstaller = new ZipInstaller();
         }
 
         private void VisualStudioCodeInstallerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -58,6 +54,8 @@ namespace MicrOS_DevTools.Forms
         private void CreateEnvironmentButton_Click(object sender, EventArgs e)
         {
             _floppyImageInstaller.Install(_settingsContainer.RepositoryLink, ProjectPathTextBox.Text);
+            _zipInstaller.Install(_settingsContainer.RepositoryLink, "install/tools.zip", Path.Combine(ProjectPathTextBox.Text, "Tools"));
+            _zipInstaller.Install(_settingsContainer.RepositoryLink, "install/opt.zip", Path.Combine(MSYSTextBox.Text, ""));
 
             //var p = Process.Start("D:/MSYS64/msys2_shell.cmd", "-defterm -mingw64 -no-start -here -c Scripts/build.sh");
             //p.WaitForExit();
