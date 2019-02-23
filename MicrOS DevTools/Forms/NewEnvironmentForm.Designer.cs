@@ -39,8 +39,11 @@
             this.MSYSTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.SelectMSYSButton = new System.Windows.Forms.Button();
-            this.NextStepButton = new System.Windows.Forms.Button();
+            this.CreateEnvironmentButton = new System.Windows.Forms.Button();
             this.SelectMSYSDirectoryDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.ProgressBar = new System.Windows.Forms.ProgressBar();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -149,22 +152,50 @@
             this.SelectMSYSButton.UseVisualStyleBackColor = true;
             this.SelectMSYSButton.Click += new System.EventHandler(this.SelectMSYSButton_Click);
             // 
-            // NextStepButton
+            // CreateEnvironmentButton
             // 
-            this.NextStepButton.Enabled = false;
-            this.NextStepButton.Location = new System.Drawing.Point(398, 265);
-            this.NextStepButton.Name = "NextStepButton";
-            this.NextStepButton.Size = new System.Drawing.Size(84, 29);
-            this.NextStepButton.TabIndex = 12;
-            this.NextStepButton.Text = "Dalej";
-            this.NextStepButton.UseVisualStyleBackColor = true;
+            this.CreateEnvironmentButton.Enabled = false;
+            this.CreateEnvironmentButton.Location = new System.Drawing.Point(340, 298);
+            this.CreateEnvironmentButton.Name = "CreateEnvironmentButton";
+            this.CreateEnvironmentButton.Size = new System.Drawing.Size(142, 29);
+            this.CreateEnvironmentButton.TabIndex = 12;
+            this.CreateEnvironmentButton.Text = "Utwórz środowisko";
+            this.CreateEnvironmentButton.UseVisualStyleBackColor = true;
+            // 
+            // ProgressBar
+            // 
+            this.ProgressBar.Location = new System.Drawing.Point(17, 269);
+            this.ProgressBar.Name = "ProgressBar";
+            this.ProgressBar.Size = new System.Drawing.Size(465, 23);
+            this.ProgressBar.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 304);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(108, 17);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Aktualny status:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(117, 304);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 17);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "oczekujący";
             // 
             // NewEnvironmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 306);
-            this.Controls.Add(this.NextStepButton);
+            this.ClientSize = new System.Drawing.Size(494, 339);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.ProgressBar);
+            this.Controls.Add(this.CreateEnvironmentButton);
             this.Controls.Add(this.MSYSTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.SelectMSYSButton);
@@ -200,7 +231,10 @@
         private System.Windows.Forms.TextBox MSYSTextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button SelectMSYSButton;
-        private System.Windows.Forms.Button NextStepButton;
+        private System.Windows.Forms.Button CreateEnvironmentButton;
         private System.Windows.Forms.FolderBrowserDialog SelectMSYSDirectoryDialog;
+        private System.Windows.Forms.ProgressBar ProgressBar;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

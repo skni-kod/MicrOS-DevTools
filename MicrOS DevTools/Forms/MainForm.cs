@@ -137,5 +137,19 @@ namespace MicrOS_DevTools.Forms
         {
             new NewEnvironmentForm().ShowDialog();
         }
+
+        private void AllControls_TextChanged(object sender, EventArgs e)
+        {
+            CreateEnvironmentButton.Enabled = RepositoryLinkTextBox.Text.Length != 0;
+            GenerateConfigurationButton.Enabled = 
+                RepositoryLinkTextBox.Text.Length != 0 &&
+                GDBTextBox.Text.Length != 0 &&
+                MSYSTextBox.Text.Length != 0 &&
+                QemuTextBox.Text.Length != 0 &&
+                ProjectPathTextBox.Text.Length != 0 &&
+                FloppyLetterTextBox.Text.Length != 0 &&
+                DebuggerTargetComboBox.Text.Length != 0 &&
+                WindowsVersionComboBox.Text.Length != 0;
+        }
     }
 }

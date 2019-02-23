@@ -38,7 +38,7 @@ namespace MicrOS_DevTools.Forms
             if (SelectMSYSDirectoryDialog.ShowDialog() == DialogResult.OK)
             {
                 MSYSTextBox.Text = SelectMSYSDirectoryDialog.SelectedPath;
-                NextStepButton.Enabled = true;
+                CreateEnvironmentButton.Enabled = true;
             }
         }
     }

@@ -80,6 +80,7 @@
             this.RepositoryLinkTextBox.Name = "RepositoryLinkTextBox";
             this.RepositoryLinkTextBox.Size = new System.Drawing.Size(409, 22);
             this.RepositoryLinkTextBox.TabIndex = 1;
+            this.RepositoryLinkTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
             // 
             // SelectGDBButton
             // 
@@ -98,6 +99,7 @@
             this.GDBTextBox.ReadOnly = true;
             this.GDBTextBox.Size = new System.Drawing.Size(289, 22);
             this.GDBTextBox.TabIndex = 4;
+            this.GDBTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
             // 
             // label2
             // 
@@ -115,6 +117,7 @@
             this.MSYSTextBox.ReadOnly = true;
             this.MSYSTextBox.Size = new System.Drawing.Size(289, 22);
             this.MSYSTextBox.TabIndex = 7;
+            this.MSYSTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
             // 
             // label3
             // 
@@ -146,6 +149,7 @@
             this.ProjectPathTextBox.ReadOnly = true;
             this.ProjectPathTextBox.Size = new System.Drawing.Size(289, 22);
             this.ProjectPathTextBox.TabIndex = 10;
+            this.ProjectPathTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
             // 
             // label4
             // 
@@ -219,6 +223,7 @@
             this.FloppyLetterTextBox.Name = "FloppyLetterTextBox";
             this.FloppyLetterTextBox.Size = new System.Drawing.Size(409, 22);
             this.FloppyLetterTextBox.TabIndex = 17;
+            this.FloppyLetterTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
             // 
             // label9
             // 
@@ -246,6 +251,7 @@
             this.DebuggerTargetComboBox.Name = "DebuggerTargetComboBox";
             this.DebuggerTargetComboBox.Size = new System.Drawing.Size(409, 24);
             this.DebuggerTargetComboBox.TabIndex = 19;
+            this.DebuggerTargetComboBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
             // 
             // GeneratorProgressBar
             // 
@@ -261,6 +267,7 @@
             this.QemuTextBox.ReadOnly = true;
             this.QemuTextBox.Size = new System.Drawing.Size(289, 22);
             this.QemuTextBox.TabIndex = 23;
+            this.QemuTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
             // 
             // label11
             // 
@@ -306,6 +313,7 @@
             this.WindowsVersionComboBox.Name = "WindowsVersionComboBox";
             this.WindowsVersionComboBox.Size = new System.Drawing.Size(409, 24);
             this.WindowsVersionComboBox.TabIndex = 26;
+            this.WindowsVersionComboBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
             // 
             // label12
             // 
