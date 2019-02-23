@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
-namespace MicrOS_DevTools.Generators
+namespace MicrOS_DevTools.ConfigsGenerator
 {
     public class FileDownloader
     {

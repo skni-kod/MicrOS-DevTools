@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
-namespace MicrOS_DevTools.Generators
+namespace MicrOS_DevTools.ConfigsGenerator
 {
     public class FileSaver
     {

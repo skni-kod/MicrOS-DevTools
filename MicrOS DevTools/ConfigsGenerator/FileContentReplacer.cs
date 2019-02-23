@@ -3,14 +3,14 @@ using System.IO;
 using System.Linq;
 using MicrOS_DevTools.Settings;
 
-namespace MicrOS_DevTools.Generators
+namespace MicrOS_DevTools.ConfigsGenerator
 {
     public class FileContentReplacer
     {
         public void Replace(SettingsContainer settingsContainer, Dictionary<string, string> files)
         {
             var replaceMap = GetReplaceMap(settingsContainer);
-            for(int i=0; i<files.Count; i++)
+            for(var i=0; i<files.Count; i++)
             {
                 var file = files.ElementAt(i);
                 var updatedString = file.Value;

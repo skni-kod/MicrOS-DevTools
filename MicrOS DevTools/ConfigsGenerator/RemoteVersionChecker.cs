@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Net;
 
-namespace MicrOS_DevTools.Generators
+namespace MicrOS_DevTools.ConfigsGenerator
 {
     public class RemoteVersionChecker
     {

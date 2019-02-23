@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace MicrOS_DevTools.Generators
+namespace MicrOS_DevTools.ConfigsGenerator
 {
     public class DebuggerTargetsGenerator
     {

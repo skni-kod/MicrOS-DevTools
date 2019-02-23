@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using MicrOS_DevTools.Generators;
+using MicrOS_DevTools.ConfigsGenerator;
 using MicrOS_DevTools.Settings;
 
 namespace MicrOS_DevTools.Forms

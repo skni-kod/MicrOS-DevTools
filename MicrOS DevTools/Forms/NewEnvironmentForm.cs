@@ -53,12 +53,26 @@ namespace MicrOS_DevTools.Forms
 
         private void CreateEnvironmentButton_Click(object sender, EventArgs e)
         {
+            StatusLabel.Text = "pobieranie obrazu dyskietki";
+            ProgressBar.Value = 20;
             _floppyImageInstaller.Install(_settingsContainer.RepositoryLink, ProjectPathTextBox.Text);
+
+            StatusLabel.Text = "pobieranie dodatkowych narzędzi";
+            ProgressBar.Value = 40;
             _zipInstaller.Install(_settingsContainer.RepositoryLink, "install/tools.zip", Path.Combine(ProjectPathTextBox.Text, "Tools"));
+
+            StatusLabel.Text = "pobieranie kompilatora";
+            ProgressBar.Value = 60;
             _zipInstaller.Install(_settingsContainer.RepositoryLink, "install/opt.zip", Path.Combine(MSYSTextBox.Text, ""));
 
-            //var p = Process.Start("D:/MSYS64/msys2_shell.cmd", "-defterm -mingw64 -no-start -here -c Scripts/build.sh");
-            //p.WaitForExit();
+            StatusLabel.Text = "konfiguracja MSYS2";
+            ProgressBar.Value = 80;
+            var msysProcess = Process.Start(Path.Combine(MSYSTextBox.Text, "msys2_shell.cmd"),
+                "-defterm -mingw64 -no-start -here -c \"pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb --noconfirm\"");
+            msysProcess.WaitForExit();
+
+            StatusLabel.Text = "gotowe";
+            ProgressBar.Value = 100;
         }
 
         private void SelectMicrOSDirectoryButton_Click(object sender, EventArgs e)
