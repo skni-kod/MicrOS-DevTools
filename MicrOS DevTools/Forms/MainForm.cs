@@ -95,13 +95,6 @@ namespace MicrOS_DevTools.Forms
 
         private void GenerateConfigurationButton_Click(object sender, EventArgs e)
         {
-            if (!_fileSaver.CheckIfDirectoriesExist(_settingsContainer.ProjectPath))
-            {
-                MessageBox.Show("Nie można zlokalizować folderu .vscode lub Scripts w folderze projektu.",
-                    "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             var filesToDownload = new[]
             {
                 "build.sh",
@@ -129,7 +122,7 @@ namespace MicrOS_DevTools.Forms
 
         private void CreateEnvironmentButton_Click(object sender, EventArgs e)
         {
-            new NewEnvironmentForm().ShowDialog();
+            new NewEnvironmentForm(_settingsContainer).ShowDialog();
         }
 
         private void AllControls_TextChanged(object sender, EventArgs e)
@@ -145,6 +138,11 @@ namespace MicrOS_DevTools.Forms
                 WindowsVersionComboBox.Text.Length != 0;
         }
 
+        private void RepositoryLinkTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            UpdateConnectionStatus();
+        }
+
         private void UpdateConnectionStatus()
         {
             if (_remoteVersionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink) == null)
@@ -155,11 +153,6 @@ namespace MicrOS_DevTools.Forms
             {
                 ConnectionStatus.BackColor = Color.LimeGreen;
             }
-        }
-
-        private void RepositoryLinkTextBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            UpdateConnectionStatus();
         }
     }
 }

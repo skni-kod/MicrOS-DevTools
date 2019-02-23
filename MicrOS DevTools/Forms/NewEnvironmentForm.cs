@@ -8,14 +8,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MicrOS_DevTools.EnvironmentInstaller;
+using MicrOS_DevTools.Settings;
 
 namespace MicrOS_DevTools.Forms
 {
     public partial class NewEnvironmentForm : Form
     {
-        public NewEnvironmentForm()
+        private readonly FloppyImageInstaller _floppyImageInstaller;
+        private SettingsContainer _settingsContainer;
+
+        public NewEnvironmentForm(SettingsContainer settingsContainer)
         {
             InitializeComponent();
+            _settingsContainer = settingsContainer;
+
+            _floppyImageInstaller = new FloppyImageInstaller();
         }
 
         private void VisualStudioCodeInstallerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -49,8 +57,10 @@ namespace MicrOS_DevTools.Forms
 
         private void CreateEnvironmentButton_Click(object sender, EventArgs e)
         {
-            var p = Process.Start("D:/MSYS64/msys2_shell.cmd", "-defterm -mingw64 -no-start -here -c Scripts/build.sh");
-            p.WaitForExit();
+            _floppyImageInstaller.Install(_settingsContainer.RepositoryLink, ProjectPathTextBox.Text);
+
+            //var p = Process.Start("D:/MSYS64/msys2_shell.cmd", "-defterm -mingw64 -no-start -here -c Scripts/build.sh");
+            //p.WaitForExit();
         }
 
         private void SelectMicrOSDirectoryButton_Click(object sender, EventArgs e)

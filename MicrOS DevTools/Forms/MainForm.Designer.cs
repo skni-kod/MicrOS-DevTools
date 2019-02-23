@@ -35,9 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.SelectMSYSButton = new System.Windows.Forms.Button();
             this.SelectMSYSDialog = new System.Windows.Forms.OpenFileDialog();
-            this.ProjectPathTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.SelectMicrOSDirectoryButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.LocalConfigurationVersionLabel = new System.Windows.Forms.Label();
@@ -56,6 +53,9 @@
             this.WindowsVersionComboBox = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.ConnectionStatus = new System.Windows.Forms.Panel();
+            this.SelectMicrOSDirectoryButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ProjectPathTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -78,7 +78,7 @@
             // 
             // MSYSTextBox
             // 
-            this.MSYSTextBox.Location = new System.Drawing.Point(322, 47);
+            this.MSYSTextBox.Location = new System.Drawing.Point(322, 75);
             this.MSYSTextBox.Name = "MSYSTextBox";
             this.MSYSTextBox.ReadOnly = true;
             this.MSYSTextBox.Size = new System.Drawing.Size(289, 22);
@@ -88,7 +88,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 44);
+            this.label3.Location = new System.Drawing.Point(12, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(269, 17);
             this.label3.TabIndex = 6;
@@ -96,7 +96,7 @@
             // 
             // SelectMSYSButton
             // 
-            this.SelectMSYSButton.Location = new System.Drawing.Point(617, 44);
+            this.SelectMSYSButton.Location = new System.Drawing.Point(617, 69);
             this.SelectMSYSButton.Name = "SelectMSYSButton";
             this.SelectMSYSButton.Size = new System.Drawing.Size(114, 28);
             this.SelectMSYSButton.TabIndex = 5;
@@ -107,34 +107,6 @@
             // SelectMSYSDialog
             // 
             this.SelectMSYSDialog.Filter = "MSYS | msys2_shell.cmd";
-            // 
-            // ProjectPathTextBox
-            // 
-            this.ProjectPathTextBox.Location = new System.Drawing.Point(322, 115);
-            this.ProjectPathTextBox.Name = "ProjectPathTextBox";
-            this.ProjectPathTextBox.ReadOnly = true;
-            this.ProjectPathTextBox.Size = new System.Drawing.Size(289, 22);
-            this.ProjectPathTextBox.TabIndex = 10;
-            this.ProjectPathTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 107);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(262, 17);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Katalog główny projektu (folder MicrOS):";
-            // 
-            // SelectMicrOSDirectoryButton
-            // 
-            this.SelectMicrOSDirectoryButton.Location = new System.Drawing.Point(617, 112);
-            this.SelectMicrOSDirectoryButton.Name = "SelectMicrOSDirectoryButton";
-            this.SelectMicrOSDirectoryButton.Size = new System.Drawing.Size(114, 28);
-            this.SelectMicrOSDirectoryButton.TabIndex = 8;
-            this.SelectMicrOSDirectoryButton.Text = "Wybierz...";
-            this.SelectMicrOSDirectoryButton.UseVisualStyleBackColor = true;
-            this.SelectMicrOSDirectoryButton.Click += new System.EventHandler(this.SelectMicrOSDirectoryButton_Click);
             // 
             // label5
             // 
@@ -228,7 +200,7 @@
             // 
             // QemuTextBox
             // 
-            this.QemuTextBox.Location = new System.Drawing.Point(322, 81);
+            this.QemuTextBox.Location = new System.Drawing.Point(322, 109);
             this.QemuTextBox.Name = "QemuTextBox";
             this.QemuTextBox.ReadOnly = true;
             this.QemuTextBox.Size = new System.Drawing.Size(289, 22);
@@ -238,7 +210,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 75);
+            this.label11.Location = new System.Drawing.Point(12, 109);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(301, 17);
             this.label11.TabIndex = 22;
@@ -246,7 +218,7 @@
             // 
             // SelectQemuButton
             // 
-            this.SelectQemuButton.Location = new System.Drawing.Point(617, 78);
+            this.SelectQemuButton.Location = new System.Drawing.Point(617, 103);
             this.SelectQemuButton.Name = "SelectQemuButton";
             this.SelectQemuButton.Size = new System.Drawing.Size(114, 28);
             this.SelectQemuButton.TabIndex = 21;
@@ -298,6 +270,34 @@
             this.ConnectionStatus.Size = new System.Drawing.Size(22, 22);
             this.ConnectionStatus.TabIndex = 27;
             // 
+            // SelectMicrOSDirectoryButton
+            // 
+            this.SelectMicrOSDirectoryButton.Location = new System.Drawing.Point(617, 31);
+            this.SelectMicrOSDirectoryButton.Name = "SelectMicrOSDirectoryButton";
+            this.SelectMicrOSDirectoryButton.Size = new System.Drawing.Size(114, 28);
+            this.SelectMicrOSDirectoryButton.TabIndex = 8;
+            this.SelectMicrOSDirectoryButton.Text = "Wybierz...";
+            this.SelectMicrOSDirectoryButton.UseVisualStyleBackColor = true;
+            this.SelectMicrOSDirectoryButton.Click += new System.EventHandler(this.SelectMicrOSDirectoryButton_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(262, 17);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Katalog główny projektu (folder MicrOS):";
+            // 
+            // ProjectPathTextBox
+            // 
+            this.ProjectPathTextBox.Location = new System.Drawing.Point(322, 45);
+            this.ProjectPathTextBox.Name = "ProjectPathTextBox";
+            this.ProjectPathTextBox.ReadOnly = true;
+            this.ProjectPathTextBox.Size = new System.Drawing.Size(289, 22);
+            this.ProjectPathTextBox.TabIndex = 10;
+            this.ProjectPathTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -347,9 +347,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button SelectMSYSButton;
         private System.Windows.Forms.OpenFileDialog SelectMSYSDialog;
-        private System.Windows.Forms.TextBox ProjectPathTextBox;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button SelectMicrOSDirectoryButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label LocalConfigurationVersionLabel;
@@ -368,6 +365,9 @@
         private System.Windows.Forms.ComboBox WindowsVersionComboBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel ConnectionStatus;
+        private System.Windows.Forms.Button SelectMicrOSDirectoryButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox ProjectPathTextBox;
     }
 }
 

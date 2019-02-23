@@ -6,14 +6,11 @@ namespace MicrOS_DevTools.Generators
 {
     public class FileSaver
     {
-        public bool CheckIfDirectoriesExist(string path)
-        {
-            return Directory.Exists(Path.Combine(path, ".vscode")) &&
-                   Directory.Exists(Path.Combine(path, "Scripts"));
-        }
-
         public void Save(string path, Dictionary<string, string> files)
         {
+            Directory.CreateDirectory(Path.Combine(path, ".vscode"));
+            Directory.CreateDirectory(Path.Combine(path, "Scripts"));
+
             foreach (var file in files)
             {
                 var targetDirectory = GetTargetDirectory(path, file.Key);
