@@ -46,7 +46,6 @@ namespace MicrOS_DevTools.Forms
             var bindings = new Dictionary<Control, string>
             {
                 { RepositoryLinkTextBox, "RepositoryLink" },
-                { GDBTextBox, "DebuggerPath" },
                 { MSYSTextBox, "MsysPath" },
                 { QemuTextBox, "QemuPath" },
                 { ProjectPathTextBox, "ProjectPath" },
@@ -68,14 +67,6 @@ namespace MicrOS_DevTools.Forms
         private void InitializeSettings()
         {
             _settingsContainer = _settingsManager.Load(SettingsPath);
-        }
-
-        private void SelectGDBButton_Click(object sender, EventArgs e)
-        {
-            if (SelectGDBDialog.ShowDialog() == DialogResult.OK)
-            {
-                GDBTextBox.Text = SelectGDBDialog.FileName;
-            }
         }
 
         private void SelectMSYSButton_Click(object sender, EventArgs e)
@@ -146,7 +137,6 @@ namespace MicrOS_DevTools.Forms
             CreateEnvironmentButton.Enabled = RepositoryLinkTextBox.Text.Length != 0;
             GenerateConfigurationButton.Enabled = 
                 RepositoryLinkTextBox.Text.Length != 0 &&
-                GDBTextBox.Text.Length != 0 &&
                 MSYSTextBox.Text.Length != 0 &&
                 QemuTextBox.Text.Length != 0 &&
                 ProjectPathTextBox.Text.Length != 0 &&

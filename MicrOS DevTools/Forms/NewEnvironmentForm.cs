@@ -18,6 +18,11 @@ namespace MicrOS_DevTools.Forms
             InitializeComponent();
         }
 
+        private void VisualStudioCodeInstallerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://code.visualstudio.com/download");
+        }
+
         private void QemuInstallerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://qemu.weilnetz.de/w64/2018/qemu-w64-setup-20181127.exe");
@@ -40,6 +45,12 @@ namespace MicrOS_DevTools.Forms
                 MSYSTextBox.Text = SelectMSYSDirectoryDialog.SelectedPath;
                 CreateEnvironmentButton.Enabled = true;
             }
+        }
+
+        private void CreateEnvironmentButton_Click(object sender, EventArgs e)
+        {
+            var p = Process.Start("D:/MSYS64/msys2_shell.cmd", "-defterm -mingw64 -no-start -here -c Scripts/build.sh");
+            p.WaitForExit();
         }
     }
 }

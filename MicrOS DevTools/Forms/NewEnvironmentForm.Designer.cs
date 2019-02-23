@@ -44,6 +44,8 @@
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.VisualStudioCodeInstallerLink = new System.Windows.Forms.LinkLabel();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -59,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 112);
+            this.label2.Location = new System.Drawing.Point(14, 140);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(206, 17);
             this.label2.TabIndex = 1;
@@ -68,7 +70,7 @@
             // QemuInstallerLink
             // 
             this.QemuInstallerLink.AutoSize = true;
-            this.QemuInstallerLink.Location = new System.Drawing.Point(244, 112);
+            this.QemuInstallerLink.Location = new System.Drawing.Point(244, 140);
             this.QemuInstallerLink.Name = "QemuInstallerLink";
             this.QemuInstallerLink.Size = new System.Drawing.Size(119, 17);
             this.QemuInstallerLink.TabIndex = 3;
@@ -79,7 +81,7 @@
             // ImdiskInstallerLink
             // 
             this.ImdiskInstallerLink.AutoSize = true;
-            this.ImdiskInstallerLink.Location = new System.Drawing.Point(244, 138);
+            this.ImdiskInstallerLink.Location = new System.Drawing.Point(244, 166);
             this.ImdiskInstallerLink.Name = "ImdiskInstallerLink";
             this.ImdiskInstallerLink.Size = new System.Drawing.Size(119, 17);
             this.ImdiskInstallerLink.TabIndex = 5;
@@ -90,7 +92,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 138);
+            this.label3.Location = new System.Drawing.Point(14, 166);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(214, 17);
             this.label3.TabIndex = 4;
@@ -99,7 +101,7 @@
             // MsysInstallerLink
             // 
             this.MsysInstallerLink.AutoSize = true;
-            this.MsysInstallerLink.Location = new System.Drawing.Point(244, 164);
+            this.MsysInstallerLink.Location = new System.Drawing.Point(244, 192);
             this.MsysInstallerLink.Name = "MsysInstallerLink";
             this.MsysInstallerLink.Size = new System.Drawing.Size(119, 17);
             this.MsysInstallerLink.TabIndex = 7;
@@ -110,7 +112,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 164);
+            this.label4.Location = new System.Drawing.Point(14, 192);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(228, 17);
             this.label4.TabIndex = 6;
@@ -129,7 +131,7 @@
             // 
             // MSYSTextBox
             // 
-            this.MSYSTextBox.Location = new System.Drawing.Point(193, 198);
+            this.MSYSTextBox.Location = new System.Drawing.Point(193, 226);
             this.MSYSTextBox.Name = "MSYSTextBox";
             this.MSYSTextBox.ReadOnly = true;
             this.MSYSTextBox.Size = new System.Drawing.Size(202, 22);
@@ -138,7 +140,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 201);
+            this.label6.Location = new System.Drawing.Point(14, 229);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(179, 17);
             this.label6.TabIndex = 10;
@@ -146,7 +148,7 @@
             // 
             // SelectMSYSButton
             // 
-            this.SelectMSYSButton.Location = new System.Drawing.Point(398, 193);
+            this.SelectMSYSButton.Location = new System.Drawing.Point(398, 221);
             this.SelectMSYSButton.Name = "SelectMSYSButton";
             this.SelectMSYSButton.Size = new System.Drawing.Size(84, 32);
             this.SelectMSYSButton.TabIndex = 9;
@@ -157,16 +159,17 @@
             // CreateEnvironmentButton
             // 
             this.CreateEnvironmentButton.Enabled = false;
-            this.CreateEnvironmentButton.Location = new System.Drawing.Point(340, 260);
+            this.CreateEnvironmentButton.Location = new System.Drawing.Point(340, 288);
             this.CreateEnvironmentButton.Name = "CreateEnvironmentButton";
             this.CreateEnvironmentButton.Size = new System.Drawing.Size(142, 29);
             this.CreateEnvironmentButton.TabIndex = 12;
             this.CreateEnvironmentButton.Text = "Utwórz środowisko";
             this.CreateEnvironmentButton.UseVisualStyleBackColor = true;
+            this.CreateEnvironmentButton.Click += new System.EventHandler(this.CreateEnvironmentButton_Click);
             // 
             // ProgressBar
             // 
-            this.ProgressBar.Location = new System.Drawing.Point(17, 231);
+            this.ProgressBar.Location = new System.Drawing.Point(17, 259);
             this.ProgressBar.Name = "ProgressBar";
             this.ProgressBar.Size = new System.Drawing.Size(465, 23);
             this.ProgressBar.TabIndex = 13;
@@ -174,7 +177,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 266);
+            this.label7.Location = new System.Drawing.Point(14, 294);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(108, 17);
             this.label7.TabIndex = 14;
@@ -183,17 +186,39 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(117, 266);
+            this.label8.Location = new System.Drawing.Point(117, 294);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 17);
             this.label8.TabIndex = 15;
             this.label8.Text = "oczekujący";
             // 
+            // VisualStudioCodeInstallerLink
+            // 
+            this.VisualStudioCodeInstallerLink.AutoSize = true;
+            this.VisualStudioCodeInstallerLink.Location = new System.Drawing.Point(244, 114);
+            this.VisualStudioCodeInstallerLink.Name = "VisualStudioCodeInstallerLink";
+            this.VisualStudioCodeInstallerLink.Size = new System.Drawing.Size(119, 17);
+            this.VisualStudioCodeInstallerLink.TabIndex = 17;
+            this.VisualStudioCodeInstallerLink.TabStop = true;
+            this.VisualStudioCodeInstallerLink.Text = "link do instalatora";
+            this.VisualStudioCodeInstallerLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.VisualStudioCodeInstallerLink_LinkClicked);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(14, 114);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(197, 17);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "1. Visual Studio Code (edytor)";
+            // 
             // NewEnvironmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(494, 296);
+            this.ClientSize = new System.Drawing.Size(494, 325);
+            this.Controls.Add(this.VisualStudioCodeInstallerLink);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ProgressBar);
@@ -238,5 +263,7 @@
         private System.Windows.Forms.ProgressBar ProgressBar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.LinkLabel VisualStudioCodeInstallerLink;
+        private System.Windows.Forms.Label label9;
     }
 }

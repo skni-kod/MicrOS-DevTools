@@ -32,9 +32,6 @@
             this.SelectMicrOSDirectoryDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.RepositoryLinkTextBox = new System.Windows.Forms.TextBox();
-            this.SelectGDBButton = new System.Windows.Forms.Button();
-            this.GDBTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.MSYSTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SelectMSYSButton = new System.Windows.Forms.Button();
@@ -84,37 +81,9 @@
             this.RepositoryLinkTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
             this.RepositoryLinkTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RepositoryLinkTextBox_KeyUp);
             // 
-            // SelectGDBButton
-            // 
-            this.SelectGDBButton.Location = new System.Drawing.Point(617, 34);
-            this.SelectGDBButton.Name = "SelectGDBButton";
-            this.SelectGDBButton.Size = new System.Drawing.Size(114, 28);
-            this.SelectGDBButton.TabIndex = 2;
-            this.SelectGDBButton.Text = "Wybierz...";
-            this.SelectGDBButton.UseVisualStyleBackColor = true;
-            this.SelectGDBButton.Click += new System.EventHandler(this.SelectGDBButton_Click);
-            // 
-            // GDBTextBox
-            // 
-            this.GDBTextBox.Location = new System.Drawing.Point(322, 37);
-            this.GDBTextBox.Name = "GDBTextBox";
-            this.GDBTextBox.ReadOnly = true;
-            this.GDBTextBox.Size = new System.Drawing.Size(289, 22);
-            this.GDBTextBox.TabIndex = 4;
-            this.GDBTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(243, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Ścieżka do debuggera (plik gdb.exe):";
-            // 
             // MSYSTextBox
             // 
-            this.MSYSTextBox.Location = new System.Drawing.Point(322, 71);
+            this.MSYSTextBox.Location = new System.Drawing.Point(322, 47);
             this.MSYSTextBox.Name = "MSYSTextBox";
             this.MSYSTextBox.ReadOnly = true;
             this.MSYSTextBox.Size = new System.Drawing.Size(289, 22);
@@ -124,7 +93,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 68);
+            this.label3.Location = new System.Drawing.Point(12, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(269, 17);
             this.label3.TabIndex = 6;
@@ -132,7 +101,7 @@
             // 
             // SelectMSYSButton
             // 
-            this.SelectMSYSButton.Location = new System.Drawing.Point(617, 68);
+            this.SelectMSYSButton.Location = new System.Drawing.Point(617, 44);
             this.SelectMSYSButton.Name = "SelectMSYSButton";
             this.SelectMSYSButton.Size = new System.Drawing.Size(114, 28);
             this.SelectMSYSButton.TabIndex = 5;
@@ -146,7 +115,7 @@
             // 
             // ProjectPathTextBox
             // 
-            this.ProjectPathTextBox.Location = new System.Drawing.Point(322, 139);
+            this.ProjectPathTextBox.Location = new System.Drawing.Point(322, 115);
             this.ProjectPathTextBox.Name = "ProjectPathTextBox";
             this.ProjectPathTextBox.ReadOnly = true;
             this.ProjectPathTextBox.Size = new System.Drawing.Size(289, 22);
@@ -156,7 +125,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 131);
+            this.label4.Location = new System.Drawing.Point(12, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(262, 17);
             this.label4.TabIndex = 9;
@@ -164,7 +133,7 @@
             // 
             // SelectMicrOSDirectoryButton
             // 
-            this.SelectMicrOSDirectoryButton.Location = new System.Drawing.Point(617, 136);
+            this.SelectMicrOSDirectoryButton.Location = new System.Drawing.Point(617, 112);
             this.SelectMicrOSDirectoryButton.Name = "SelectMicrOSDirectoryButton";
             this.SelectMicrOSDirectoryButton.Size = new System.Drawing.Size(114, 28);
             this.SelectMicrOSDirectoryButton.TabIndex = 8;
@@ -175,7 +144,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 268);
+            this.label5.Location = new System.Drawing.Point(12, 244);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(184, 17);
             this.label5.TabIndex = 11;
@@ -184,7 +153,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 296);
+            this.label6.Location = new System.Drawing.Point(12, 272);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(238, 17);
             this.label6.TabIndex = 12;
@@ -193,7 +162,7 @@
             // LocalConfigurationVersionLabel
             // 
             this.LocalConfigurationVersionLabel.AutoSize = true;
-            this.LocalConfigurationVersionLabel.Location = new System.Drawing.Point(263, 268);
+            this.LocalConfigurationVersionLabel.Location = new System.Drawing.Point(263, 244);
             this.LocalConfigurationVersionLabel.Name = "LocalConfigurationVersionLabel";
             this.LocalConfigurationVersionLabel.Size = new System.Drawing.Size(16, 17);
             this.LocalConfigurationVersionLabel.TabIndex = 13;
@@ -202,7 +171,7 @@
             // RemoteConfigurationVersionLabel
             // 
             this.RemoteConfigurationVersionLabel.AutoSize = true;
-            this.RemoteConfigurationVersionLabel.Location = new System.Drawing.Point(263, 296);
+            this.RemoteConfigurationVersionLabel.Location = new System.Drawing.Point(263, 272);
             this.RemoteConfigurationVersionLabel.Name = "RemoteConfigurationVersionLabel";
             this.RemoteConfigurationVersionLabel.Size = new System.Drawing.Size(16, 17);
             this.RemoteConfigurationVersionLabel.TabIndex = 14;
@@ -210,7 +179,7 @@
             // 
             // GenerateConfigurationButton
             // 
-            this.GenerateConfigurationButton.Location = new System.Drawing.Point(476, 268);
+            this.GenerateConfigurationButton.Location = new System.Drawing.Point(476, 244);
             this.GenerateConfigurationButton.Name = "GenerateConfigurationButton";
             this.GenerateConfigurationButton.Size = new System.Drawing.Size(255, 47);
             this.GenerateConfigurationButton.TabIndex = 15;
@@ -220,7 +189,7 @@
             // 
             // FloppyLetterTextBox
             // 
-            this.FloppyLetterTextBox.Location = new System.Drawing.Point(322, 170);
+            this.FloppyLetterTextBox.Location = new System.Drawing.Point(322, 146);
             this.FloppyLetterTextBox.MaxLength = 1;
             this.FloppyLetterTextBox.Name = "FloppyLetterTextBox";
             this.FloppyLetterTextBox.Size = new System.Drawing.Size(409, 22);
@@ -230,7 +199,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 160);
+            this.label9.Location = new System.Drawing.Point(12, 136);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(200, 17);
             this.label9.TabIndex = 16;
@@ -239,7 +208,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 203);
+            this.label10.Location = new System.Drawing.Point(12, 179);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(105, 17);
             this.label10.TabIndex = 18;
@@ -249,7 +218,7 @@
             // 
             this.DebuggerTargetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DebuggerTargetComboBox.FormattingEnabled = true;
-            this.DebuggerTargetComboBox.Location = new System.Drawing.Point(322, 200);
+            this.DebuggerTargetComboBox.Location = new System.Drawing.Point(322, 176);
             this.DebuggerTargetComboBox.Name = "DebuggerTargetComboBox";
             this.DebuggerTargetComboBox.Size = new System.Drawing.Size(409, 24);
             this.DebuggerTargetComboBox.TabIndex = 19;
@@ -257,14 +226,14 @@
             // 
             // GeneratorProgressBar
             // 
-            this.GeneratorProgressBar.Location = new System.Drawing.Point(15, 324);
+            this.GeneratorProgressBar.Location = new System.Drawing.Point(15, 300);
             this.GeneratorProgressBar.Name = "GeneratorProgressBar";
             this.GeneratorProgressBar.Size = new System.Drawing.Size(716, 23);
             this.GeneratorProgressBar.TabIndex = 20;
             // 
             // QemuTextBox
             // 
-            this.QemuTextBox.Location = new System.Drawing.Point(322, 105);
+            this.QemuTextBox.Location = new System.Drawing.Point(322, 81);
             this.QemuTextBox.Name = "QemuTextBox";
             this.QemuTextBox.ReadOnly = true;
             this.QemuTextBox.Size = new System.Drawing.Size(289, 22);
@@ -274,7 +243,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 99);
+            this.label11.Location = new System.Drawing.Point(12, 75);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(301, 17);
             this.label11.TabIndex = 22;
@@ -282,7 +251,7 @@
             // 
             // SelectQemuButton
             // 
-            this.SelectQemuButton.Location = new System.Drawing.Point(617, 102);
+            this.SelectQemuButton.Location = new System.Drawing.Point(617, 78);
             this.SelectQemuButton.Name = "SelectQemuButton";
             this.SelectQemuButton.Size = new System.Drawing.Size(114, 28);
             this.SelectQemuButton.TabIndex = 21;
@@ -296,7 +265,7 @@
             // 
             // CreateEnvironmentButton
             // 
-            this.CreateEnvironmentButton.Location = new System.Drawing.Point(322, 268);
+            this.CreateEnvironmentButton.Location = new System.Drawing.Point(322, 244);
             this.CreateEnvironmentButton.Name = "CreateEnvironmentButton";
             this.CreateEnvironmentButton.Size = new System.Drawing.Size(148, 47);
             this.CreateEnvironmentButton.TabIndex = 24;
@@ -311,7 +280,7 @@
             this.WindowsVersionComboBox.Items.AddRange(new object[] {
             "Windows 10",
             "Windows 7"});
-            this.WindowsVersionComboBox.Location = new System.Drawing.Point(322, 230);
+            this.WindowsVersionComboBox.Location = new System.Drawing.Point(322, 206);
             this.WindowsVersionComboBox.Name = "WindowsVersionComboBox";
             this.WindowsVersionComboBox.Size = new System.Drawing.Size(409, 24);
             this.WindowsVersionComboBox.TabIndex = 26;
@@ -320,7 +289,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 233);
+            this.label12.Location = new System.Drawing.Point(12, 209);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(124, 17);
             this.label12.TabIndex = 25;
@@ -338,7 +307,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 360);
+            this.ClientSize = new System.Drawing.Size(743, 334);
             this.Controls.Add(this.ConnectionStatus);
             this.Controls.Add(this.WindowsVersionComboBox);
             this.Controls.Add(this.label12);
@@ -362,9 +331,6 @@
             this.Controls.Add(this.MSYSTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.SelectMSYSButton);
-            this.Controls.Add(this.GDBTextBox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.SelectGDBButton);
             this.Controls.Add(this.RepositoryLinkTextBox);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -384,9 +350,6 @@
         private System.Windows.Forms.FolderBrowserDialog SelectMicrOSDirectoryDialog;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox RepositoryLinkTextBox;
-        private System.Windows.Forms.Button SelectGDBButton;
-        private System.Windows.Forms.TextBox GDBTextBox;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox MSYSTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button SelectMSYSButton;

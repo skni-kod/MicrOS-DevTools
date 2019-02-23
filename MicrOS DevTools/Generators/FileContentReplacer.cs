@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using MicrOS_DevTools.Settings;
 
@@ -29,7 +30,7 @@ namespace MicrOS_DevTools.Generators
             {
                 { "[PROJECT_PATH]", settingsContainer.ProjectPath },
                 { "[QEMU_PATH]", settingsContainer.QemuPath },
-                { "[DEBUGGER_PATH]", settingsContainer.DebuggerPath },
+                { "[DEBUGGER_PATH]", Path.Combine(settingsContainer.MsysPath, "mingw64/bin/gdb.exe") },
                 { "[DEBUGGER_TARGET]", settingsContainer.DebuggerTarget },
                 { "[FLOPPY_LETTER]", settingsContainer.FloppyLetter },
                 { "[MSYS_PATH]", settingsContainer.MsysPath },

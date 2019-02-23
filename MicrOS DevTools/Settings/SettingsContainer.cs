@@ -3,7 +3,6 @@
     public class SettingsContainer
     {
         public string RepositoryLink { get; set; }
-        public string DebuggerPath { get; set; }
         public string MsysPath { get; set; }
         public string QemuPath { get; set; }
         public string ProjectPath { get; set; }
