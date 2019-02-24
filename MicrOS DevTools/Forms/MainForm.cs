@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,6 +36,8 @@ namespace MicrOS_DevTools.Forms
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
+            Process.Start("MicrOS DevTools Updater.exe");
+
             await InitializeSettingsAsync();
             InitializeBindings();
 
