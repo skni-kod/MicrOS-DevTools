@@ -68,11 +68,11 @@
     <Compile Include="Forms\NewEnvironmentForm.Designer.cs">
       <DependentUpon>NewEnvironmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfigsGenerator\FileContentReplacer.cs" />
-    <Compile Include="ConfigsGenerator\FileSaver.cs" />
-    <Compile Include="ConfigsGenerator\DebuggerTargetsGenerator.cs" />
-    <Compile Include="ConfigsGenerator\FileDownloader.cs" />
-    <Compile Include="ConfigsGenerator\VersionChecker.cs" />
+    <Compile Include="ConfigGenerator\FileContentReplacer.cs" />
+    <Compile Include="ConfigGenerator\FileSaver.cs" />
+    <Compile Include="ConfigGenerator\DebuggerTargetsGenerator.cs" />
+    <Compile Include="ConfigGenerator\FileDownloader.cs" />
+    <Compile Include="ConfigGenerator\VersionChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\SettingsContainer.cs" />

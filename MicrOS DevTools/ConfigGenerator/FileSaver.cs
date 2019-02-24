@@ -2,11 +2,11 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace MicrOS_DevTools.ConfigsGenerator
+namespace MicrOS_DevTools.ConfigGenerator
 {
     public class FileSaver
     {
-        public async Task SaveAsync(string path, Dictionary<string, byte[]> files)
+        public void SaveAsync(string path, Dictionary<string, byte[]> files)
         {
             Directory.CreateDirectory(Path.Combine(path, ".vscode"));
             Directory.CreateDirectory(Path.Combine(path, "Scripts"));

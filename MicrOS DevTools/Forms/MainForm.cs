@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MicrOS_DevTools.ConfigsGenerator;
+using MicrOS_DevTools.ConfigGenerator;
 using MicrOS_DevTools.Settings;
 
 namespace MicrOS_DevTools.Forms
@@ -62,14 +62,14 @@ namespace MicrOS_DevTools.Forms
                 { WindowsVersionComboBox, "WindowsVersion" }
             };
 
+            var debuggerTargets = _debuggerTargetsGenerator.Generate(_settingsContainer.ProjectPath);
+            DebuggerTargetComboBox.Items.AddRange(debuggerTargets.ToArray());
+             
             foreach (var binding in bindings)
             {
                 binding.Key.DataBindings.Add("Text", _settingsContainer, binding.Value, false,
                     DataSourceUpdateMode.OnPropertyChanged);
             }
-
-            var debuggerTargets = _debuggerTargetsGenerator.Generate(_settingsContainer.ProjectPath);
-            DebuggerTargetComboBox.Items.AddRange(debuggerTargets.ToArray());
         }
 
         private async Task InitializeSettingsAsync()
@@ -114,8 +114,8 @@ namespace MicrOS_DevTools.Forms
             };
 
             var downloadedFiles = await _fileDownloader.DownloadAsync(_settingsContainer.RepositoryLink, filesToDownload);
-            _fileContentReplacer.Replace(_settingsContainer, downloadedFiles);
-            await _fileSaver.SaveAsync(_settingsContainer.ProjectPath, downloadedFiles);
+            var filesWithReplacedContent = _fileContentReplacer.Replace(_settingsContainer, downloadedFiles);
+            _fileSaver.SaveAsync(_settingsContainer.ProjectPath, filesWithReplacedContent);
             
             _settingsContainer.LocalConfigurationVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
             await _settingsManager.SaveAsync(SettingsPath, _settingsContainer);
@@ -146,14 +146,14 @@ namespace MicrOS_DevTools.Forms
                 WindowsVersionComboBox.Text.Length != 0;
         }
 
-        private void RepositoryLinkTextBox_KeyUp(object sender, KeyEventArgs e)
+        private async void RepositoryLinkTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            UpdateConnectionStatus();
+            await UpdateConnectionStatus();
         }
 
-        private void UpdateConnectionStatus()
+        private async Task UpdateConnectionStatus()
         {
-            if (_versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink) == null)
+            if (await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink) == null)
             {
                 ConnectionStatus.BackColor = Color.Red;
             }

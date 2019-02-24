@@ -4,30 +4,33 @@ using System.Linq;
 using System.Text;
 using MicrOS_DevTools.Settings;
 
-namespace MicrOS_DevTools.ConfigsGenerator
+namespace MicrOS_DevTools.ConfigGenerator
 {
     public class FileContentReplacer
     {
-        public void Replace(SettingsContainer settingsContainer, Dictionary<string, byte[]> files)
+        public Dictionary<string, byte[]> Replace(SettingsContainer settingsContainer, Dictionary<string, byte[]> files)
         {
+            var filesWithReplacedContent = new Dictionary<string, byte[]>();
             var replaceMap = GetReplaceMap(settingsContainer);
-            for(var i=0; i<files.Count; i++)
+
+            foreach(var file in files)
             {
-                var file = files.ElementAt(i);
                 var updatedString = Encoding.UTF8.GetString(file.Value);
 
                 foreach (var replaceMapElement in replaceMap)
                 {
-                    updatedString = updatedString.Replace(replaceMapElement.Key, replaceMapElement.Value.Replace("\\", "/"));
+                    updatedString = updatedString.Replace(replaceMapElement.Key, replaceMapElement.Value);
                 }
 
-                files[file.Key] = Encoding.UTF8.GetBytes(updatedString);
+                filesWithReplacedContent[file.Key] = Encoding.UTF8.GetBytes(updatedString);
             }
+
+            return filesWithReplacedContent;
         }
 
         private Dictionary<string, string> GetReplaceMap(SettingsContainer settingsContainer)
         {
-            return new Dictionary<string, string>
+            var map = new Dictionary<string, string>
             {
                 { "[PROJECT_PATH]", settingsContainer.ProjectPath },
                 { "[QEMU_PATH]", settingsContainer.QemuPath },
@@ -37,6 +40,13 @@ namespace MicrOS_DevTools.ConfigsGenerator
                 { "[MSYS_PATH]", settingsContainer.MsysPath },
                 { "[EXPLICIT_POWERSHELL]", settingsContainer.WindowsVersion == "Windows 7" ? "powershell" : string.Empty }
             };
+
+            foreach (var item in map.ToList())
+            {
+                map[item.Key] = item.Value.Replace("\\", "/");
+            }
+
+            return map;
         }
     }
 }

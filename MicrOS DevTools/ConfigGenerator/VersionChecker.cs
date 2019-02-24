@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace MicrOS_DevTools.ConfigsGenerator
+namespace MicrOS_DevTools.ConfigGenerator
 {
     public class VersionChecker
     {

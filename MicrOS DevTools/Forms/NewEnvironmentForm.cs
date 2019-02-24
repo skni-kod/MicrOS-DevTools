@@ -11,7 +11,7 @@ namespace MicrOS_DevTools.Forms
     {
         private readonly FloppyImageInstaller _floppyImageInstaller;
         private readonly ZipInstaller _zipInstaller;
-        private SettingsContainer _settingsContainer;
+        private readonly SettingsContainer _settingsContainer;
 
         public NewEnvironmentForm(SettingsContainer settingsContainer)
         {
