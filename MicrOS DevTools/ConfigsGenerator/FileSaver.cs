@@ -6,7 +6,7 @@ namespace MicrOS_DevTools.ConfigsGenerator
 {
     public class FileSaver
     {
-        public async Task SaveAsync(string path, Dictionary<string, string> files)
+        public async Task SaveAsync(string path, Dictionary<string, byte[]> files)
         {
             Directory.CreateDirectory(Path.Combine(path, ".vscode"));
             Directory.CreateDirectory(Path.Combine(path, "Scripts"));
@@ -16,10 +16,7 @@ namespace MicrOS_DevTools.ConfigsGenerator
                 var targetDirectory = GetTargetDirectory(path, file.Key);
                 var targetFileName = Path.Combine(targetDirectory, file.Key);
 
-                using (var fileWriter = new StreamWriter(targetFileName))
-                {
-                    await fileWriter.WriteAsync(file.Value);
-                }
+                File.WriteAllBytes(targetFileName, file.Value);
             }
         }
 

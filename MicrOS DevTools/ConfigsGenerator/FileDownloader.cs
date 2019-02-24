@@ -10,9 +10,9 @@ namespace MicrOS_DevTools.ConfigsGenerator
     {
         public event EventHandler<float> OnDownloadProgress;
 
-        public async Task<Dictionary<string, string>> DownloadAsync(string link, params string[] fileNames)
+        public async Task<Dictionary<string, byte[]>> DownloadAsync(string link, params string[] fileNames)
         {
-            var downloadedFiles = new Dictionary<string, string>();
+            var downloadedFiles = new Dictionary<string, byte[]>();
             var webClient = new WebClient
             {
                 BaseAddress = link
@@ -22,7 +22,7 @@ namespace MicrOS_DevTools.ConfigsGenerator
             foreach (var fileName in fileNames)
             {
                 var content = await webClient.DownloadDataTaskAsync(fileName);
-                downloadedFiles.Add(fileName, Encoding.ASCII.GetString(content));
+                downloadedFiles.Add(fileName, content);
 
                 OnDownloadProgress?.Invoke(this, index++ * 100f / fileNames.Length);
             }

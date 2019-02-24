@@ -1,26 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using MicrOS_DevTools.Settings;
 
 namespace MicrOS_DevTools.ConfigsGenerator
 {
     public class FileContentReplacer
     {
-        public void Replace(SettingsContainer settingsContainer, Dictionary<string, string> files)
+        public void Replace(SettingsContainer settingsContainer, Dictionary<string, byte[]> files)
         {
             var replaceMap = GetReplaceMap(settingsContainer);
             for(var i=0; i<files.Count; i++)
             {
                 var file = files.ElementAt(i);
-                var updatedString = file.Value;
+                var updatedString = Encoding.UTF8.GetString(file.Value);
 
                 foreach (var replaceMapElement in replaceMap)
                 {
                     updatedString = updatedString.Replace(replaceMapElement.Key, replaceMapElement.Value.Replace("\\", "/"));
                 }
 
-                files[file.Key] = updatedString;
+                files[file.Key] = Encoding.UTF8.GetBytes(updatedString);
             }
         }
 

@@ -47,6 +47,9 @@ namespace MicrOS_DevTools_Updater.Forms
                     MessageBox.Show("Aktualizacja zakończona", "Aktualizacja", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
+                    _settingsContainer.AppVersion = remoteAppVersion;
+                    await _settingsManager.SaveAsync("settings.json", _settingsContainer);
+
                     Process.Start("MicrOS DevTools.exe");
                 }
 
