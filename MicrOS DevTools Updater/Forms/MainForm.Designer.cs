@@ -1,4 +1,4 @@
-﻿namespace MicrOS_DevTools_Updater
+﻿namespace MicrOS_DevTools_Updater.Forms
 {
     partial class MainForm
     {
@@ -39,6 +39,7 @@
             this.Opacity = 0D;
             this.ShowInTaskbar = false;
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }

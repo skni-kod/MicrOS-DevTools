@@ -1,4 +1,4 @@
-﻿namespace MicrOS_DevTools.Settings
+﻿namespace MicrOS_DevTools_Updater.Settings
 {
     public class SettingsContainer
     {
