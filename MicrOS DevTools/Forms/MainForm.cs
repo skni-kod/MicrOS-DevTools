@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using MicrOS_DevTools.ConfigsGenerator;
 using MicrOS_DevTools.Settings;
@@ -30,12 +31,16 @@ namespace MicrOS_DevTools.Forms
             _versionChecker = new VersionChecker();
 
             InitializeComponent();
-            InitializeSettings();
+        }
+
+        private async void MainForm_Load(object sender, EventArgs e)
+        {
+            await InitializeSettingsAsync();
             InitializeBindings();
 
             _fileDownloader.OnDownloadProgress += FileDownloader_OnDownloadProgress;
 
-            RemoteConfigurationVersionLabel.Text = _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
+            RemoteConfigurationVersionLabel.Text = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
             LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
 
             UpdateConnectionStatus();
@@ -64,9 +69,9 @@ namespace MicrOS_DevTools.Forms
             DebuggerTargetComboBox.Items.AddRange(debuggerTargets.ToArray());
         }
 
-        private void InitializeSettings()
+        private async Task InitializeSettingsAsync()
         {
-            _settingsContainer = _settingsManager.Load(SettingsPath);
+            _settingsContainer = await _settingsManager.LoadAsync(SettingsPath);
         }
 
         private void SelectMSYSButton_Click(object sender, EventArgs e)
@@ -93,7 +98,7 @@ namespace MicrOS_DevTools.Forms
             }
         }
 
-        private void GenerateConfigurationButton_Click(object sender, EventArgs e)
+        private async void GenerateConfigurationButton_Click(object sender, EventArgs e)
         {
             var filesToDownload = new[]
             {
@@ -105,12 +110,12 @@ namespace MicrOS_DevTools.Forms
                 "tasks.json"
             };
 
-            var downloadedFiles = _fileDownloader.Download(_settingsContainer.RepositoryLink, filesToDownload);
+            var downloadedFiles = await _fileDownloader.DownloadAsync(_settingsContainer.RepositoryLink, filesToDownload);
             _fileContentReplacer.Replace(_settingsContainer, downloadedFiles);
-            _fileSaver.Save(_settingsContainer.ProjectPath, downloadedFiles);
+            await _fileSaver.SaveAsync(_settingsContainer.ProjectPath, downloadedFiles);
             
-            _settingsContainer.LocalConfigurationVersion = _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
-            _settingsManager.Save(SettingsPath, _settingsContainer);
+            _settingsContainer.LocalConfigurationVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
+            await _settingsManager.SaveAsync(SettingsPath, _settingsContainer);
 
             LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
         }

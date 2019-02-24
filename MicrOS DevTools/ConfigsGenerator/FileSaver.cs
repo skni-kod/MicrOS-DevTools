@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace MicrOS_DevTools.ConfigsGenerator
 {
     public class FileSaver
     {
-        public void Save(string path, Dictionary<string, string> files)
+        public async Task SaveAsync(string path, Dictionary<string, string> files)
         {
             Directory.CreateDirectory(Path.Combine(path, ".vscode"));
             Directory.CreateDirectory(Path.Combine(path, "Scripts"));
@@ -17,7 +18,7 @@ namespace MicrOS_DevTools.ConfigsGenerator
 
                 using (var fileWriter = new StreamWriter(targetFileName))
                 {
-                    fileWriter.Write(file.Value);
+                    await fileWriter.WriteAsync(file.Value);
                 }
             }
         }

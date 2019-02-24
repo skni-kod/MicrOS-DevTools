@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MicrOS_DevTools.ConfigsGenerator
 {
@@ -9,7 +10,7 @@ namespace MicrOS_DevTools.ConfigsGenerator
     {
         public event EventHandler<float> OnDownloadProgress;
 
-        public Dictionary<string, string> Download(string link, params string[] fileNames)
+        public async Task<Dictionary<string, string>> DownloadAsync(string link, params string[] fileNames)
         {
             var downloadedFiles = new Dictionary<string, string>();
             var webClient = new WebClient
@@ -20,7 +21,7 @@ namespace MicrOS_DevTools.ConfigsGenerator
             var index = 1;
             foreach (var fileName in fileNames)
             {
-                var content = webClient.DownloadData(fileName);
+                var content = await webClient.DownloadDataTaskAsync(fileName);
                 downloadedFiles.Add(fileName, Encoding.ASCII.GetString(content));
 
                 OnDownloadProgress?.Invoke(this, index++ * 100f / fileNames.Length);
