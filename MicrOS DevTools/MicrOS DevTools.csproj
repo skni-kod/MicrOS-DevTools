@@ -72,7 +72,7 @@
     <Compile Include="ConfigsGenerator\FileSaver.cs" />
     <Compile Include="ConfigsGenerator\DebuggerTargetsGenerator.cs" />
     <Compile Include="ConfigsGenerator\FileDownloader.cs" />
-    <Compile Include="ConfigsGenerator\RemoteVersionChecker.cs" />
+    <Compile Include="ConfigsGenerator\VersionChecker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\SettingsContainer.cs" />

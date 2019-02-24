@@ -15,7 +15,7 @@ namespace MicrOS_DevTools.Forms
         private readonly FileDownloader _fileDownloader;
         private readonly FileContentReplacer _fileContentReplacer;
         private readonly FileSaver _fileSaver;
-        private readonly RemoteVersionChecker _remoteVersionChecker;
+        private readonly VersionChecker _versionChecker;
         private SettingsContainer _settingsContainer;
 
         private const string SettingsPath = "settings.json";
@@ -27,7 +27,7 @@ namespace MicrOS_DevTools.Forms
             _fileDownloader = new FileDownloader();
             _fileContentReplacer = new FileContentReplacer();
             _fileSaver = new FileSaver();
-            _remoteVersionChecker = new RemoteVersionChecker();
+            _versionChecker = new VersionChecker();
 
             InitializeComponent();
             InitializeSettings();
@@ -35,7 +35,7 @@ namespace MicrOS_DevTools.Forms
 
             _fileDownloader.OnDownloadProgress += FileDownloader_OnDownloadProgress;
 
-            RemoteConfigurationVersionLabel.Text = _remoteVersionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink); ;
+            RemoteConfigurationVersionLabel.Text = _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
             LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
 
             UpdateConnectionStatus();
@@ -71,9 +71,9 @@ namespace MicrOS_DevTools.Forms
 
         private void SelectMSYSButton_Click(object sender, EventArgs e)
         {
-            if (SelectMSYSDialog.ShowDialog() == DialogResult.OK)
+            if (SelectMSYSDirectoryDialog.ShowDialog() == DialogResult.OK)
             {
-                MSYSTextBox.Text = SelectMSYSDialog.FileName;
+                MSYSTextBox.Text = SelectMSYSDirectoryDialog.SelectedPath;
             }
         }
 
@@ -109,7 +109,7 @@ namespace MicrOS_DevTools.Forms
             _fileContentReplacer.Replace(_settingsContainer, downloadedFiles);
             _fileSaver.Save(_settingsContainer.ProjectPath, downloadedFiles);
             
-            _settingsContainer.LocalConfigurationVersion = _remoteVersionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
+            _settingsContainer.LocalConfigurationVersion = _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
             _settingsManager.Save(SettingsPath, _settingsContainer);
 
             LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
@@ -145,7 +145,7 @@ namespace MicrOS_DevTools.Forms
 
         private void UpdateConnectionStatus()
         {
-            if (_remoteVersionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink) == null)
+            if (_versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink) == null)
             {
                 ConnectionStatus.BackColor = Color.Red;
             }

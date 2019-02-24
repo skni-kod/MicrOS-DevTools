@@ -1,9 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
 
 namespace MicrOS_DevTools.ConfigsGenerator
 {
-    public class RemoteVersionChecker
+    public class VersionChecker
     {
         public string GetRemoteConfigurationVersion(string path)
         {
@@ -13,9 +14,14 @@ namespace MicrOS_DevTools.ConfigsGenerator
                 {
                     return webClient.DownloadString(Path.Combine(path, "version.txt"));
                 }
-                catch (WebException)
+                catch (Exception ex)
                 {
-                    return null;
+                    if (ex is WebException || ex is ArgumentException || ex is UriFormatException)
+                    {
+                        return null;
+                    }
+
+                    throw;
                 }
             }
         }

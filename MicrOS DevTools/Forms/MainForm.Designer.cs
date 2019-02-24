@@ -35,7 +35,6 @@
             this.MSYSTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SelectMSYSButton = new System.Windows.Forms.Button();
-            this.SelectMSYSDialog = new System.Windows.Forms.OpenFileDialog();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.LocalConfigurationVersionLabel = new System.Windows.Forms.Label();
@@ -57,6 +56,7 @@
             this.SelectMicrOSDirectoryButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.ProjectPathTextBox = new System.Windows.Forms.TextBox();
+            this.SelectMSYSDirectoryDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // label1
@@ -104,10 +104,6 @@
             this.SelectMSYSButton.Text = "Wybierz...";
             this.SelectMSYSButton.UseVisualStyleBackColor = true;
             this.SelectMSYSButton.Click += new System.EventHandler(this.SelectMSYSButton_Click);
-            // 
-            // SelectMSYSDialog
-            // 
-            this.SelectMSYSDialog.Filter = "MSYS | msys2_shell.cmd";
             // 
             // label5
             // 
@@ -348,7 +344,6 @@
         private System.Windows.Forms.TextBox MSYSTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button SelectMSYSButton;
-        private System.Windows.Forms.OpenFileDialog SelectMSYSDialog;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label LocalConfigurationVersionLabel;
@@ -370,6 +365,7 @@
         private System.Windows.Forms.Button SelectMicrOSDirectoryButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox ProjectPathTextBox;
+        private System.Windows.Forms.FolderBrowserDialog SelectMSYSDirectoryDialog;
     }
 }
 
