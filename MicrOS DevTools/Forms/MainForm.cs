@@ -21,10 +21,11 @@ namespace MicrOS_DevTools.Forms
         private SettingsContainer _settingsContainer;
 
         private const string SettingsPath = "settings.json";
+        private const string UpdaterName = "MicrOS DevTools Updater.exe";
 
         public MainForm()
         {
-            _settingsManager = new SettingsManager();
+            _settingsManager = new SettingsManager("settings.json");
             _debuggerTargetsGenerator = new DebuggerTargetsGenerator();
             _fileDownloader = new FileDownloader();
             _fileContentReplacer = new FileContentReplacer();
@@ -36,7 +37,7 @@ namespace MicrOS_DevTools.Forms
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
-            Process.Start("MicrOS DevTools Updater.exe");
+            Process.Start(UpdaterName);
 
             await InitializeSettingsAsync();
             InitializeBindings();
@@ -46,7 +47,7 @@ namespace MicrOS_DevTools.Forms
             RemoteConfigurationVersionLabel.Text = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
             LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
 
-            UpdateConnectionStatus();
+            await UpdateConnectionStatus();
         }
 
         private void InitializeBindings()
@@ -63,7 +64,7 @@ namespace MicrOS_DevTools.Forms
             };
 
             var debuggerTargets = _debuggerTargetsGenerator.Generate(_settingsContainer.ProjectPath);
-            DebuggerTargetComboBox.Items.AddRange(debuggerTargets.ToArray());
+            DebuggerTargetComboBox.Items.AddRange(debuggerTargets.ToArray<object>());
              
             foreach (var binding in bindings)
             {
@@ -74,7 +75,7 @@ namespace MicrOS_DevTools.Forms
 
         private async Task InitializeSettingsAsync()
         {
-            _settingsContainer = await _settingsManager.LoadAsync(SettingsPath);
+            _settingsContainer = await _settingsManager.LoadAsync();
         }
 
         private void SelectMSYSButton_Click(object sender, EventArgs e)
@@ -118,7 +119,7 @@ namespace MicrOS_DevTools.Forms
             _fileSaver.SaveAsync(_settingsContainer.ProjectPath, filesWithReplacedContent);
             
             _settingsContainer.LocalConfigurationVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
-            await _settingsManager.SaveAsync(SettingsPath, _settingsContainer);
+            await _settingsManager.SaveAsync(_settingsContainer);
 
             LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
         }
@@ -153,14 +154,8 @@ namespace MicrOS_DevTools.Forms
 
         private async Task UpdateConnectionStatus()
         {
-            if (await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink) == null)
-            {
-                ConnectionStatus.BackColor = Color.Red;
-            }
-            else
-            {
-                ConnectionStatus.BackColor = Color.LimeGreen;
-            }
+            var remoteConfigurationVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
+            ConnectionStatus.BackColor = remoteConfigurationVersion == null ? Color.Red : Color.LimeGreen;
         }
     }
 }

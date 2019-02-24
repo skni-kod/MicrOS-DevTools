@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MicrOS_DevTools_Updater.Updater

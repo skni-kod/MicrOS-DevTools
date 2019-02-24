@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 using MicrOS_DevTools_Updater.Settings;
@@ -15,9 +14,13 @@ namespace MicrOS_DevTools_Updater.Forms
         private readonly FileDownloader _fileDownloader;
         private SettingsContainer _settingsContainer;
 
+        private const string NewUpdateMessageString = "Dostępna jest nowa wersja aplikacji MicrOS DevTools. Czy chcesz ją teraz zaktualizować?";
+        private const string UpdateDoneString = "Aktualizacja zakończona";
+        private const string DevToolsProcessName = "MicrOS DevTools.exe";
+
         public MainForm()
         {
-            _settingsManager = new SettingsManager();
+            _settingsManager = new SettingsManager("settings.json");
             _versionChecker = new VersionChecker();
             _processTerminator = new ProcessTerminator();
             _fileDownloader = new FileDownloader();
@@ -27,14 +30,12 @@ namespace MicrOS_DevTools_Updater.Forms
 
         private async void MainForm_Load(object sender, System.EventArgs e)
         {
-            _settingsContainer = await _settingsManager.LoadAsync("settings.json");
+            _settingsContainer = await _settingsManager.LoadAsync();
 
             var remoteAppVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
             if (remoteAppVersion != _settingsContainer.AppVersion)
             {
-                var result = MessageBox.Show(
-                    "Dostępna jest nowa wersja aplikacji MicrOS DevTools. Czy chcesz ją teraz zaktualizować?",
-                    "Aktualizacja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show(NewUpdateMessageString, "Aktualizacja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes)
                 {
@@ -44,17 +45,16 @@ namespace MicrOS_DevTools_Updater.Forms
                     await _fileDownloader.DownloadAndSaveAsync(_settingsContainer.RepositoryLink);
 
                     Thread.Sleep(500);
-                    MessageBox.Show("Aktualizacja zakończona", "Aktualizacja", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    MessageBox.Show(UpdateDoneString, "Aktualizacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     _settingsContainer.AppVersion = remoteAppVersion;
-                    await _settingsManager.SaveAsync("settings.json", _settingsContainer);
+                    await _settingsManager.SaveAsync(_settingsContainer);
 
-                    Process.Start("MicrOS DevTools.exe");
+                    Process.Start(DevToolsProcessName);
                 }
-
-                Environment.Exit(0);
             }
+
+            Application.Exit();
         }
     }
 }

@@ -13,6 +13,19 @@ namespace MicrOS_DevTools.Forms
         private readonly ZipInstaller _zipInstaller;
         private readonly SettingsContainer _settingsContainer;
 
+        private const string DownloadingFloppyString = "pobieranie obrazu dyskietki";
+        private const string DownloadingAdditionalToolsString = "pobieranie dodatkowych narzędzi";
+        private const string DownloadingCompilerString = "pobieranie kompilatora";
+        private const string ConfiguringMsys2String = "konfiguracja MSYS2";
+        private const string ReadyString = "gotowe";
+
+        private const string Msys2ParametersString = "-defterm -mingw64 -no-start -here -c \"pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb --noconfirm\"";
+
+        private const string VisualStudioCodeInstallerLinkString = "https://code.visualstudio.com/download";
+        private const string QemuInstallerLinkString = "https://qemu.weilnetz.de/w64/2018/qemu-w64-setup-20181127.exe";
+        private const string ImdiskInstallerLinkString = "https://sourceforge.net/projects/imdisk-toolkit/files/20190130/ImDiskTk-x64.exe";
+        private const string Msys2InstallerLink = "http://repo.msys2.org/distrib/x86_64/msys2-x86_64-20180531.exe";
+
         public NewEnvironmentForm(SettingsContainer settingsContainer)
         {
             InitializeComponent();
@@ -24,22 +37,22 @@ namespace MicrOS_DevTools.Forms
 
         private void VisualStudioCodeInstallerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://code.visualstudio.com/download");
+            Process.Start(VisualStudioCodeInstallerLinkString);
         }
 
         private void QemuInstallerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://qemu.weilnetz.de/w64/2018/qemu-w64-setup-20181127.exe");
+            Process.Start(QemuInstallerLinkString);
         }
 
         private void ImdiskInstallerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://sourceforge.net/projects/imdisk-toolkit/files/20190130/ImDiskTk-x64.exe");
+            Process.Start(ImdiskInstallerLinkString);
         }
 
         private void MsysInstallerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("http://repo.msys2.org/distrib/x86_64/msys2-x86_64-20180531.exe");
+            Process.Start(Msys2InstallerLink);
         }
 
         private void SelectMSYSButton_Click(object sender, EventArgs e)
@@ -53,25 +66,23 @@ namespace MicrOS_DevTools.Forms
 
         private async void CreateEnvironmentButton_Click(object sender, EventArgs e)
         {
-            StatusLabel.Text = "pobieranie obrazu dyskietki";
+            StatusLabel.Text = DownloadingFloppyString;
             ProgressBar.Value = 20;
             await _floppyImageInstaller.InstallAsync(_settingsContainer.RepositoryLink, ProjectPathTextBox.Text);
 
-            StatusLabel.Text = "pobieranie dodatkowych narzędzi";
+            StatusLabel.Text = DownloadingAdditionalToolsString;
             ProgressBar.Value = 40;
             await _zipInstaller.InstallAsync(_settingsContainer.RepositoryLink, "install/tools.zip", Path.Combine(ProjectPathTextBox.Text, "Tools"));
 
-            StatusLabel.Text = "pobieranie kompilatora";
+            StatusLabel.Text = DownloadingCompilerString;
             ProgressBar.Value = 60;
             await _zipInstaller.InstallAsync(_settingsContainer.RepositoryLink, "install/opt.zip", Path.Combine(MSYSTextBox.Text, ""));
 
-            StatusLabel.Text = "konfiguracja MSYS2";
+            StatusLabel.Text = ConfiguringMsys2String;
             ProgressBar.Value = 80;
-            var msysProcess = Process.Start(Path.Combine(MSYSTextBox.Text, "msys2_shell.cmd"),
-                "-defterm -mingw64 -no-start -here -c \"pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb --noconfirm\"");
-            msysProcess.WaitForExit();
+            Process.Start(Path.Combine(MSYSTextBox.Text, "msys2_shell.cmd"), Msys2ParametersString)?.WaitForExit();
 
-            StatusLabel.Text = "gotowe";
+            StatusLabel.Text = ReadyString;
             ProgressBar.Value = 100;
         }
 
