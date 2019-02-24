@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using MicrOS_DevTools_Updater.Settings;
 using MicrOS_DevTools_Updater.Updater;
@@ -10,6 +11,7 @@ namespace MicrOS_DevTools_Updater.Forms
         private readonly SettingsManager _settingsManager;
         private readonly VersionChecker _versionChecker;
         private readonly ProcessTerminator _processTerminator;
+        private readonly FileDownloader _fileDownloader;
         private SettingsContainer _settingsContainer;
 
         public MainForm()
@@ -17,6 +19,7 @@ namespace MicrOS_DevTools_Updater.Forms
             _settingsManager = new SettingsManager();
             _versionChecker = new VersionChecker();
             _processTerminator = new ProcessTerminator();
+            _fileDownloader = new FileDownloader();
 
             InitializeComponent();
         }
@@ -35,11 +38,12 @@ namespace MicrOS_DevTools_Updater.Forms
                 if (result == DialogResult.Yes)
                 {
                     _processTerminator.Terminate("MicrOS DevTools");
+                    await _fileDownloader.DownloadAndSaveAsync(_settingsContainer.RepositoryLink);
+
+                    Process.Start("MicrOS DevTools.exe");
                 }
-                else if (result == DialogResult.No)
-                {
-                    Environment.Exit(0);
-                }
+
+                Environment.Exit(0);
             }
         }
     }
