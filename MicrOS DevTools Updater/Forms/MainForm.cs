@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 using MicrOS_DevTools_Updater.Settings;
 using MicrOS_DevTools_Updater.Updater;
@@ -37,8 +38,14 @@ namespace MicrOS_DevTools_Updater.Forms
 
                 if (result == DialogResult.Yes)
                 {
+                    Opacity = 100;
+
                     _processTerminator.Terminate("MicrOS DevTools");
                     await _fileDownloader.DownloadAndSaveAsync(_settingsContainer.RepositoryLink);
+
+                    Thread.Sleep(500);
+                    MessageBox.Show("Aktualizacja zakończona", "Aktualizacja", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
 
                     Process.Start("MicrOS DevTools.exe");
                 }
