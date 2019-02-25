@@ -91,9 +91,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 75);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(269, 17);
+            this.label3.Size = new System.Drawing.Size(123, 17);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Ścieżka do MSYS (plik msys2_shell.cmd):";
+            this.label3.Text = "Ścieżka do MSYS:";
             // 
             // SelectMSYSButton
             // 

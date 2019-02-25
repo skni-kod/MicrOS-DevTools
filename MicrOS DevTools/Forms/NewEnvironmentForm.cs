@@ -66,6 +66,8 @@ namespace MicrOS_DevTools.Forms
 
         private async void CreateEnvironmentButton_Click(object sender, EventArgs e)
         {
+            CreateEnvironmentButton.Enabled = false;
+
             StatusLabel.Text = DownloadingFloppyString;
             ProgressBar.Value = 20;
             await _floppyImageInstaller.InstallAsync(_settingsContainer.RepositoryLink, ProjectPathTextBox.Text);
@@ -84,6 +86,8 @@ namespace MicrOS_DevTools.Forms
 
             StatusLabel.Text = ReadyString;
             ProgressBar.Value = 100;
+
+            CreateEnvironmentButton.Enabled = true;
         }
 
         private void SelectMicrOSDirectoryButton_Click(object sender, EventArgs e)

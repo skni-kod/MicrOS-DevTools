@@ -20,33 +20,47 @@ namespace MicrOS_DevTools.Forms
         private readonly VersionChecker _versionChecker;
         private SettingsContainer _settingsContainer;
 
+        private Timer _remoteConfigVersionTimer;
+        private Timer _updaterTimer;
+
+        private const int RemoteConfigVersionTimerInterval = 1;
+        private const int UpdaterTimerIntervalMinutes = 5;
+
         private const string SettingsPath = "settings.json";
         private const string UpdaterName = "MicrOS DevTools Updater.exe";
 
         public MainForm()
         {
-            _settingsManager = new SettingsManager("settings.json");
+            _settingsManager = new SettingsManager(SettingsPath);
             _debuggerTargetsGenerator = new DebuggerTargetsGenerator();
             _fileDownloader = new FileDownloader();
             _fileContentReplacer = new FileContentReplacer();
             _fileSaver = new FileSaver();
             _versionChecker = new VersionChecker();
 
+            _remoteConfigVersionTimer = new Timer();
+            _remoteConfigVersionTimer.Interval = 1000 * 60 * RemoteConfigVersionTimerInterval;
+            _remoteConfigVersionTimer.Tick += RemoteConfigVersionTimer_Elapsed;
+            _remoteConfigVersionTimer.Start();
+
+            _updaterTimer = new Timer();
+            _updaterTimer.Interval = 1000 * 60 * UpdaterTimerIntervalMinutes;
+            _updaterTimer.Tick += UpdaterTimer_Elapsed;
+            _updaterTimer.Start();
+
             InitializeComponent();
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
-            Process.Start(UpdaterName);
-
             await InitializeSettingsAsync();
+
+            RunUpdater();
             InitializeBindings();
 
             _fileDownloader.OnDownloadProgress += FileDownloader_OnDownloadProgress;
 
-            RemoteConfigurationVersionLabel.Text = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
-            LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
-
+            await UpdateRemoteConfigVersionLabels();
             await UpdateConnectionStatus();
         }
 
@@ -116,12 +130,12 @@ namespace MicrOS_DevTools.Forms
 
             var downloadedFiles = await _fileDownloader.DownloadAsync(_settingsContainer.RepositoryLink, filesToDownload);
             var filesWithReplacedContent = _fileContentReplacer.Replace(_settingsContainer, downloadedFiles);
-            _fileSaver.SaveAsync(_settingsContainer.ProjectPath, filesWithReplacedContent);
-            
-            _settingsContainer.LocalConfigurationVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
-            await _settingsManager.SaveAsync(_settingsContainer);
 
-            LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
+            _fileSaver.SaveAsync(_settingsContainer.ProjectPath, filesWithReplacedContent);    
+            _settingsContainer.LocalConfigurationVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
+
+            await _settingsManager.SaveAsync(_settingsContainer);
+            await UpdateRemoteConfigVersionLabels();
         }
 
         private void FileDownloader_OnDownloadProgress(object sender, float e)
@@ -156,6 +170,39 @@ namespace MicrOS_DevTools.Forms
         {
             var remoteConfigurationVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
             ConnectionStatus.BackColor = remoteConfigurationVersion == null ? Color.Red : Color.LimeGreen;
+        }
+
+        private async Task UpdateRemoteConfigVersionLabels()
+        {
+            LocalConfigurationVersionLabel.Text = _settingsContainer.LocalConfigurationVersion;
+            RemoteConfigurationVersionLabel.Text = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
+
+            var color = Color.Black;
+            var fontStyle = FontStyle.Regular;
+
+            if (LocalConfigurationVersionLabel.Text != RemoteConfigurationVersionLabel.Text)
+            {
+                color = Color.Red;
+                fontStyle = FontStyle.Bold;
+            }
+
+            LocalConfigurationVersionLabel.ForeColor = color;
+            LocalConfigurationVersionLabel.Font = new Font(LocalConfigurationVersionLabel.Font, fontStyle);
+        }
+
+        private void RunUpdater()
+        {
+            Process.Start(UpdaterName);
+        }
+
+        private async void RemoteConfigVersionTimer_Elapsed(object sender, EventArgs e)
+        {
+            await UpdateRemoteConfigVersionLabels();
+        }
+
+        private void UpdaterTimer_Elapsed(object sender, EventArgs e)
+        {
+            RunUpdater();
         }
     }
 }
