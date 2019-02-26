@@ -6,7 +6,7 @@ namespace MicrOS_DevTools_Updater.Settings
 {
     public class SettingsManager
     {
-        private string _fileName;
+        private readonly string _fileName;
 
         public SettingsManager(string fileName)
         {
