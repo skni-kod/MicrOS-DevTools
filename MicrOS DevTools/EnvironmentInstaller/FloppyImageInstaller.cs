@@ -12,10 +12,10 @@ namespace MicrOS_DevTools.EnvironmentInstaller
             Directory.CreateDirectory(Path.Combine(projectPath, "Build"));
 
             using (var webClient = new WebClient())
-            using (var floppyWriter = new StreamWriter(Path.Combine(projectPath, "Build/floppy.img"), false))
+            using (var fileStream = new FileStream(Path.Combine(projectPath, "Build/floppy.img"), FileMode.OpenOrCreate))
             {
                 var floppyData = await webClient.DownloadDataTaskAsync(Path.Combine(repositoryPath, "install/floppy.img"));
-                await floppyWriter.WriteAsync(Encoding.UTF8.GetString(floppyData).ToCharArray());
+                await fileStream.WriteAsync(floppyData, 0, floppyData.Length);
             }
         }
     }
