@@ -57,6 +57,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.ProjectPathTextBox = new System.Windows.Forms.TextBox();
             this.SelectMSYSDirectoryDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ThreadsCountNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.ThreadsCountNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -108,7 +111,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 229);
+            this.label5.Location = new System.Drawing.Point(12, 257);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(184, 17);
             this.label5.TabIndex = 11;
@@ -117,7 +120,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 259);
+            this.label6.Location = new System.Drawing.Point(12, 287);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(238, 17);
             this.label6.TabIndex = 12;
@@ -126,7 +129,7 @@
             // LocalConfigurationVersionLabel
             // 
             this.LocalConfigurationVersionLabel.AutoSize = true;
-            this.LocalConfigurationVersionLabel.Location = new System.Drawing.Point(263, 229);
+            this.LocalConfigurationVersionLabel.Location = new System.Drawing.Point(263, 257);
             this.LocalConfigurationVersionLabel.Name = "LocalConfigurationVersionLabel";
             this.LocalConfigurationVersionLabel.Size = new System.Drawing.Size(16, 17);
             this.LocalConfigurationVersionLabel.TabIndex = 13;
@@ -135,7 +138,7 @@
             // RemoteConfigurationVersionLabel
             // 
             this.RemoteConfigurationVersionLabel.AutoSize = true;
-            this.RemoteConfigurationVersionLabel.Location = new System.Drawing.Point(263, 259);
+            this.RemoteConfigurationVersionLabel.Location = new System.Drawing.Point(263, 287);
             this.RemoteConfigurationVersionLabel.Name = "RemoteConfigurationVersionLabel";
             this.RemoteConfigurationVersionLabel.Size = new System.Drawing.Size(16, 17);
             this.RemoteConfigurationVersionLabel.TabIndex = 14;
@@ -143,7 +146,7 @@
             // 
             // GenerateConfigurationButton
             // 
-            this.GenerateConfigurationButton.Location = new System.Drawing.Point(476, 229);
+            this.GenerateConfigurationButton.Location = new System.Drawing.Point(476, 257);
             this.GenerateConfigurationButton.Name = "GenerateConfigurationButton";
             this.GenerateConfigurationButton.Size = new System.Drawing.Size(255, 47);
             this.GenerateConfigurationButton.TabIndex = 15;
@@ -172,7 +175,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 168);
+            this.label10.Location = new System.Drawing.Point(12, 196);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(105, 17);
             this.label10.TabIndex = 18;
@@ -182,7 +185,7 @@
             // 
             this.DebuggerTargetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DebuggerTargetComboBox.FormattingEnabled = true;
-            this.DebuggerTargetComboBox.Location = new System.Drawing.Point(322, 165);
+            this.DebuggerTargetComboBox.Location = new System.Drawing.Point(322, 193);
             this.DebuggerTargetComboBox.Name = "DebuggerTargetComboBox";
             this.DebuggerTargetComboBox.Size = new System.Drawing.Size(409, 24);
             this.DebuggerTargetComboBox.TabIndex = 19;
@@ -190,7 +193,7 @@
             // 
             // GeneratorProgressBar
             // 
-            this.GeneratorProgressBar.Location = new System.Drawing.Point(15, 288);
+            this.GeneratorProgressBar.Location = new System.Drawing.Point(15, 316);
             this.GeneratorProgressBar.Name = "GeneratorProgressBar";
             this.GeneratorProgressBar.Size = new System.Drawing.Size(716, 23);
             this.GeneratorProgressBar.TabIndex = 20;
@@ -229,7 +232,7 @@
             // 
             // CreateEnvironmentButton
             // 
-            this.CreateEnvironmentButton.Location = new System.Drawing.Point(322, 229);
+            this.CreateEnvironmentButton.Location = new System.Drawing.Point(322, 257);
             this.CreateEnvironmentButton.Name = "CreateEnvironmentButton";
             this.CreateEnvironmentButton.Size = new System.Drawing.Size(148, 47);
             this.CreateEnvironmentButton.TabIndex = 24;
@@ -244,7 +247,7 @@
             this.WindowsVersionComboBox.Items.AddRange(new object[] {
             "Windows 10",
             "Windows 7"});
-            this.WindowsVersionComboBox.Location = new System.Drawing.Point(322, 195);
+            this.WindowsVersionComboBox.Location = new System.Drawing.Point(322, 223);
             this.WindowsVersionComboBox.Name = "WindowsVersionComboBox";
             this.WindowsVersionComboBox.Size = new System.Drawing.Size(409, 24);
             this.WindowsVersionComboBox.TabIndex = 26;
@@ -253,7 +256,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 198);
+            this.label12.Location = new System.Drawing.Point(12, 226);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(124, 17);
             this.label12.TabIndex = 25;
@@ -295,11 +298,29 @@
             this.ProjectPathTextBox.TabIndex = 10;
             this.ProjectPathTextBox.TextChanged += new System.EventHandler(this.AllControls_TextChanged);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 168);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(271, 17);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Liczba używanych wątków przy kompilacji:";
+            // 
+            // ThreadsCountNumericUpDown
+            // 
+            this.ThreadsCountNumericUpDown.Location = new System.Drawing.Point(322, 166);
+            this.ThreadsCountNumericUpDown.Name = "ThreadsCountNumericUpDown";
+            this.ThreadsCountNumericUpDown.Size = new System.Drawing.Size(409, 22);
+            this.ThreadsCountNumericUpDown.TabIndex = 30;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 322);
+            this.ClientSize = new System.Drawing.Size(743, 350);
+            this.Controls.Add(this.ThreadsCountNumericUpDown);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.ConnectionStatus);
             this.Controls.Add(this.WindowsVersionComboBox);
             this.Controls.Add(this.label12);
@@ -333,6 +354,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MicrOS DevTools";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ThreadsCountNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,6 +389,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox ProjectPathTextBox;
         private System.Windows.Forms.FolderBrowserDialog SelectMSYSDirectoryDialog;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown ThreadsCountNumericUpDown;
     }
 }
 

@@ -73,13 +73,17 @@ namespace MicrOS_DevTools.Forms
                 { QemuTextBox, "QemuPath" },
                 { ProjectPathTextBox, "ProjectPath" },
                 { FloppyLetterTextBox, "FloppyLetter" },
+                { ThreadsCountNumericUpDown, "ThreadsCount" },
                 { DebuggerTargetComboBox, "DebuggerTarget" },
                 { WindowsVersionComboBox, "WindowsVersion" }
             };
 
-            var debuggerTargets = _debuggerTargetsGenerator.Generate(_settingsContainer.ProjectPath);
-            DebuggerTargetComboBox.Items.AddRange(debuggerTargets.ToArray<object>());
-             
+            if (_settingsContainer.ProjectPath != string.Empty)
+            {
+                var debuggerTargets = _debuggerTargetsGenerator.Generate(_settingsContainer.ProjectPath);
+                DebuggerTargetComboBox.Items.AddRange(debuggerTargets.ToArray<object>());
+            }
+
             foreach (var binding in bindings)
             {
                 binding.Key.DataBindings.Add("Text", _settingsContainer, binding.Value, false,
@@ -159,6 +163,14 @@ namespace MicrOS_DevTools.Forms
                 FloppyLetterTextBox.Text.Length != 0 &&
                 DebuggerTargetComboBox.Text.Length != 0 &&
                 WindowsVersionComboBox.Text.Length != 0;
+
+            if (((Control) sender).Name == "ProjectPathTextBox")
+            {
+                DebuggerTargetComboBox.Items.Clear();
+
+                var debuggerTargets = _debuggerTargetsGenerator.Generate(((Control)sender).Text);
+                DebuggerTargetComboBox.Items.AddRange(debuggerTargets.ToArray<object>());
+            }
         }
 
         private async void RepositoryLinkTextBox_KeyUp(object sender, KeyEventArgs e)

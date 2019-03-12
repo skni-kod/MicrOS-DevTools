@@ -7,6 +7,7 @@
         public string QemuPath { get; set; }
         public string ProjectPath { get; set; }
         public string FloppyLetter { get; set; }
+        public int ThreadsCount { get; set; }
         public string DebuggerTarget { get; set; }
         public string WindowsVersion { get; set; }
         public string LocalConfigurationVersion { get; set; }
