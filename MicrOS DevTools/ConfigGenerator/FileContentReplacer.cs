@@ -36,6 +36,7 @@ namespace MicrOS_DevTools.ConfigGenerator
                 { "[QEMU_PATH]", settingsContainer.QemuPath },
                 { "[DEBUGGER_PATH]", Path.Combine(settingsContainer.MsysPath, "mingw64/bin/gdb.exe") },
                 { "[DEBUGGER_TARGET]", settingsContainer.DebuggerTarget },
+                { "[THREADS_COUNT]", settingsContainer.ThreadsCount.ToString() },
                 { "[FLOPPY_LETTER]", settingsContainer.FloppyLetter },
                 { "[MSYS_PATH]", settingsContainer.MsysPath },
                 { "[EXPLICIT_POWERSHELL]", settingsContainer.WindowsVersion == "Windows 7" ? "powershell" : string.Empty }
