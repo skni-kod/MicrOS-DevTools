@@ -125,9 +125,6 @@ namespace MicrOS_DevTools.Forms
             var filesToDownload = new[]
             {
                 "build.sh",
-                "build_environment.sh",
-                "build_library.sh",
-                "clean.sh",
                 "launch.json",
                 "tasks.json"
             };

@@ -310,9 +310,19 @@
             // ThreadsCountNumericUpDown
             // 
             this.ThreadsCountNumericUpDown.Location = new System.Drawing.Point(322, 166);
+            this.ThreadsCountNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.ThreadsCountNumericUpDown.Name = "ThreadsCountNumericUpDown";
             this.ThreadsCountNumericUpDown.Size = new System.Drawing.Size(409, 22);
             this.ThreadsCountNumericUpDown.TabIndex = 30;
+            this.ThreadsCountNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // MainForm
             // 
