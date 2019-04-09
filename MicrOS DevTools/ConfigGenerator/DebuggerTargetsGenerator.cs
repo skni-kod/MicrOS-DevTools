@@ -21,7 +21,7 @@ namespace MicrOS_DevTools.ConfigGenerator
 
         private IEnumerable<string> GetApplicationTargets(string repositoryPath)
         {
-            var applicationsDirectoryPath = Path.Combine(repositoryPath, "build\\Floppy\\ENV");
+            var applicationsDirectoryPath = Path.Combine(repositoryPath, "build\\floppy\\ENV");
             if (!Directory.Exists(applicationsDirectoryPath))
             {
                 yield break;
