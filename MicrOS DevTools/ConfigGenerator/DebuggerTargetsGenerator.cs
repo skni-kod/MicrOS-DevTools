@@ -16,12 +16,12 @@ namespace MicrOS_DevTools.ConfigGenerator
 
         private string GetKernelTarget(string repositoryPath)
         {
-            return Path.Combine(repositoryPath, "Build\\kernel.elf").Replace(repositoryPath, string.Empty);
+            return Path.Combine(repositoryPath, "build\\kernel.elf").Replace(repositoryPath, string.Empty);
         }
 
         private IEnumerable<string> GetApplicationTargets(string repositoryPath)
         {
-            var applicationsDirectoryPath = Path.Combine(repositoryPath, "Build\\Floppy\\ENV");
+            var applicationsDirectoryPath = Path.Combine(repositoryPath, "build\\Floppy\\ENV");
             if (!Directory.Exists(applicationsDirectoryPath))
             {
                 yield break;

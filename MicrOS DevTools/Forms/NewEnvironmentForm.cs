@@ -74,7 +74,7 @@ namespace MicrOS_DevTools.Forms
 
             StatusLabel.Text = DownloadingAdditionalToolsString;
             ProgressBar.Value = 40;
-            await _zipInstaller.InstallAsync(_settingsContainer.RepositoryLink, "install/tools.zip", Path.Combine(ProjectPathTextBox.Text, "Tools"));
+            await _zipInstaller.InstallAsync(_settingsContainer.RepositoryLink, "install/tools.zip", Path.Combine(ProjectPathTextBox.Text, "tools"));
 
             StatusLabel.Text = DownloadingCompilerString;
             ProgressBar.Value = 60;

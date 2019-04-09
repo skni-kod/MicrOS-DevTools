@@ -8,7 +8,7 @@ namespace MicrOS_DevTools.ConfigGenerator
         public void SaveAsync(string path, Dictionary<string, byte[]> files)
         {
             Directory.CreateDirectory(Path.Combine(path, ".vscode"));
-            Directory.CreateDirectory(Path.Combine(path, "Scripts"));
+            Directory.CreateDirectory(Path.Combine(path, "scripts"));
 
             foreach (var file in files)
             {
@@ -24,7 +24,7 @@ namespace MicrOS_DevTools.ConfigGenerator
             switch (Path.GetExtension(file))
             {
                 case ".json": return Path.Combine(path, ".vscode");
-                case ".sh": return Path.Combine(path, "Scripts");
+                case ".sh": return Path.Combine(path, "scripts");
             }
 
             return null;
