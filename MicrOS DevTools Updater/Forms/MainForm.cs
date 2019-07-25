@@ -30,28 +30,35 @@ namespace MicrOS_DevTools_Updater.Forms
 
         private async void MainForm_Load(object sender, System.EventArgs e)
         {
-            _settingsContainer = await _settingsManager.LoadAsync();
-
-            var remoteAppVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
-            if (remoteAppVersion != _settingsContainer.AppVersion)
+            try
             {
-                var result = MessageBox.Show(NewUpdateMessageString, "Aktualizacja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                _settingsContainer = await _settingsManager.LoadAsync();
 
-                if (result == DialogResult.Yes)
+                var remoteAppVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
+                if (remoteAppVersion != _settingsContainer.AppVersion)
                 {
-                    Opacity = 100;
+                    var result = MessageBox.Show(NewUpdateMessageString, "Aktualizacja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    _processTerminator.Terminate("MicrOS DevTools");
-                    await _fileDownloader.DownloadAndSaveAsync(_settingsContainer.RepositoryLink);
+                    if (result == DialogResult.Yes)
+                    {
+                        Opacity = 100;
 
-                    Thread.Sleep(500);
-                    MessageBox.Show(UpdateDoneString, "Aktualizacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _processTerminator.Terminate("MicrOS DevTools");
+                        await _fileDownloader.DownloadAndSaveAsync(_settingsContainer.RepositoryLink);
 
-                    _settingsContainer.AppVersion = remoteAppVersion;
-                    await _settingsManager.SaveAsync(_settingsContainer);
+                        Thread.Sleep(500);
+                        MessageBox.Show(UpdateDoneString, "Aktualizacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    Process.Start(DevToolsProcessName);
+                        _settingsContainer.AppVersion = remoteAppVersion;
+                        await _settingsManager.SaveAsync(_settingsContainer);
+
+                        Process.Start(DevToolsProcessName);
+                    }
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Nie można odnaleźć serwera aktualizacji, popraw adres i zresetuj aplikację.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             Application.Exit();

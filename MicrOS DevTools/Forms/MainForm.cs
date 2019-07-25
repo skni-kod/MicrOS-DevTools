@@ -177,8 +177,19 @@ namespace MicrOS_DevTools.Forms
 
         private async Task UpdateConnectionStatus()
         {
-            var remoteConfigurationVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
-            ConnectionStatus.BackColor = remoteConfigurationVersion == null ? Color.Red : Color.LimeGreen;
+            try
+            {
+                var remoteConfigurationVersion = await _versionChecker.GetRemoteConfigurationVersion(_settingsContainer.RepositoryLink);
+                ConnectionStatus.BackColor = remoteConfigurationVersion == null ? Color.Red : Color.LimeGreen;
+                GenerateConfigurationButton.Enabled = remoteConfigurationVersion != null;
+                CreateEnvironmentButton.Enabled = remoteConfigurationVersion != null;
+            }
+            catch
+            {
+                ConnectionStatus.BackColor = Color.Red;
+                GenerateConfigurationButton.Enabled = false;
+                CreateEnvironmentButton.Enabled = false;
+            }
         }
 
         private async Task UpdateRemoteConfigVersionLabels()
