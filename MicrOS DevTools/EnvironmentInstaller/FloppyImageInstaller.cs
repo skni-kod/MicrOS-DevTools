@@ -1,6 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MicrOS_DevTools.EnvironmentInstaller
@@ -9,13 +9,14 @@ namespace MicrOS_DevTools.EnvironmentInstaller
     {
         public async Task InstallAsync(string repositoryPath, string projectPath)
         {
+            var localPath = Path.Combine(projectPath, "build/floppy.img");
+            var remotePath = Path.Combine(repositoryPath, "install/floppy.img");
+
             Directory.CreateDirectory(Path.Combine(projectPath, "build"));
 
             using (var webClient = new WebClient())
-            using (var fileStream = new FileStream(Path.Combine(projectPath, "build/floppy.img"), FileMode.OpenOrCreate))
             {
-                var floppyData = await webClient.DownloadDataTaskAsync(Path.Combine(repositoryPath, "install/floppy.img"));
-                await fileStream.WriteAsync(floppyData, 0, floppyData.Length);
+                await webClient.DownloadFileTaskAsync(new Uri(remotePath), localPath);
             }
         }
     }
