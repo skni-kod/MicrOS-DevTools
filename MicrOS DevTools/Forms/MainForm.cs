@@ -84,6 +84,11 @@ namespace MicrOS_DevTools.Forms
                 DebuggerTargetComboBox.Items.AddRange(debuggerTargets.ToArray<object>());
             }
 
+            if (_settingsContainer.ThreadsCount == 0)
+            {
+                _settingsContainer.ThreadsCount = 1;
+            }
+
             foreach (var binding in bindings)
             {
                 binding.Key.DataBindings.Add("Text", _settingsContainer, binding.Value, false,
