@@ -13,7 +13,7 @@ namespace MicrOS_DevTools.Forms
         private readonly ZipInstaller _zipInstaller;
         private readonly SettingsContainer _settingsContainer;
 
-        private const string DownloadingFloppyString = "pobieranie obrazu dyskietki";
+        private const string DownloadingFloppyString = "pobieranie obrazów";
         private const string DownloadingAdditionalToolsString = "pobieranie dodatkowych narzędzi";
         private const string DownloadingCompilerString = "pobieranie kompilatora";
         private const string ConfiguringMsys2String = "konfiguracja MSYS2";

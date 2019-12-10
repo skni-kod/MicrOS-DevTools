@@ -9,8 +9,14 @@ namespace MicrOS_DevTools.EnvironmentInstaller
     {
         public async Task InstallAsync(string repositoryPath, string projectPath)
         {
-            var localPath = Path.Combine(projectPath, "build/floppy.img");
-            var remotePath = Path.Combine(repositoryPath, "install/floppy.img");
+            await InstallFileAsync("floppy.img", repositoryPath, projectPath);
+            await InstallFileAsync("hdd.img", repositoryPath, projectPath);
+        }
+
+        private async Task InstallFileAsync(string filename, string repositoryPath, string projectPath)
+        {
+            var localPath = Path.Combine(projectPath, $"build/{filename}");
+            var remotePath = Path.Combine(repositoryPath, $"install/{filename}");
 
             Directory.CreateDirectory(Path.Combine(projectPath, "build"));
 
