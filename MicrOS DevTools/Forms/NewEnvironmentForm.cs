@@ -19,7 +19,7 @@ namespace MicrOS_DevTools.Forms
         private const string ConfiguringMsys2String = "konfiguracja MSYS2";
         private const string ReadyString = "gotowe";
 
-        private const string Msys2ParametersString = "-defterm -mingw64 -no-start -here -c \"pacman -S mingw-w64-x86_64-gdb make --noconfirm\"";
+        private const string Msys2ParametersString = "-defterm -mingw64 -no-start -here -c \"pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb make bison flex gmp-devel mpc-devel mpfr-devel texinfo diffutils --noconfirm\"";
 
         private const string VisualStudioCodeInstallerLinkString = "https://code.visualstudio.com/download";
         private const string QemuInstallerLinkString = "https://qemu.weilnetz.de/w64/2018/qemu-w64-setup-20181127.exe";
