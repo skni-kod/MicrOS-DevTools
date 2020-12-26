@@ -53,6 +53,7 @@
             this.SelectMicrOSDirectoryButton = new System.Windows.Forms.Button();
             this.SelectMicrOSDirectoryDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SubProgressBar = new System.Windows.Forms.ProgressBar();
+            this.FinishedButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -176,8 +177,7 @@
             // 
             // CreateEnvironmentButton
             // 
-            this.CreateEnvironmentButton.Enabled = false;
-            this.CreateEnvironmentButton.Location = new System.Drawing.Point(256, 307);
+            this.CreateEnvironmentButton.Location = new System.Drawing.Point(11, 327);
             this.CreateEnvironmentButton.Margin = new System.Windows.Forms.Padding(2);
             this.CreateEnvironmentButton.Name = "CreateEnvironmentButton";
             this.CreateEnvironmentButton.Size = new System.Drawing.Size(106, 30);
@@ -284,11 +284,22 @@
             this.SubProgressBar.Size = new System.Drawing.Size(349, 19);
             this.SubProgressBar.TabIndex = 24;
             // 
+            // FinishedButton
+            // 
+            this.FinishedButton.Location = new System.Drawing.Point(122, 327);
+            this.FinishedButton.Name = "FinishedButton";
+            this.FinishedButton.Size = new System.Drawing.Size(81, 30);
+            this.FinishedButton.TabIndex = 25;
+            this.FinishedButton.Text = "Zamknij";
+            this.FinishedButton.UseVisualStyleBackColor = true;
+            this.FinishedButton.Click += new System.EventHandler(this.FinishedButton_Click);
+            // 
             // NewEnvironmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 342);
+            this.ClientSize = new System.Drawing.Size(370, 368);
+            this.Controls.Add(this.FinishedButton);
             this.Controls.Add(this.SubProgressBar);
             this.Controls.Add(this.ProjectPathTextBox);
             this.Controls.Add(this.label11);
@@ -350,5 +361,6 @@
         private System.Windows.Forms.Button SelectMicrOSDirectoryButton;
         private System.Windows.Forms.FolderBrowserDialog SelectMicrOSDirectoryDialog;
         private System.Windows.Forms.ProgressBar SubProgressBar;
+        private System.Windows.Forms.Button FinishedButton;
     }
 }

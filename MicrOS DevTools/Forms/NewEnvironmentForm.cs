@@ -86,6 +86,7 @@ namespace MicrOS_DevTools.Forms
         private async void CreateEnvironmentButton_Click(object sender, EventArgs e)
         {
             CreateEnvironmentButton.Enabled = false;
+            FinishedButton.Enabled = false;
 
             StatusLabel.Text = DownloadingFloppyString;
             ProgressBar.Value = 0;
@@ -117,8 +118,10 @@ namespace MicrOS_DevTools.Forms
 
             StatusLabel.Text = ReadyString;
             ProgressBar.Value = 100;
+            SubProgressBar.Value = 100;
 
             CreateEnvironmentButton.Enabled = true;
+            FinishedButton.Enabled = true;
         }
 
         private void SelectMicrOSDirectoryButton_Click(object sender, EventArgs e)
@@ -138,6 +141,11 @@ namespace MicrOS_DevTools.Forms
             this.Invoke(new MethodInvoker(() => {
                 SubProgressBar.Value = progress;
             }));
+        }
+
+        private void FinishedButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
